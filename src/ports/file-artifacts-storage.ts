@@ -5,11 +5,11 @@ export interface FileArtifactsStorage {
     /**
      * Uploads a file artifact to a bucket and returns the path to the file
      * @param bucket - The bucket to upload the file to
-     * @param folder - The folder to upload the file to
+     * @param path - The path to upload the file to
      * @param fileArtifacts - The file artifact to upload
-     * @returns The path to the zipped file
+     * @returns void
      */
-    upload(bucket: string, folder: string, fileArtifacts: FileArtifacts): Promise<string>
+    upload(bucket: string, path: string, fileArtifacts: FileArtifacts): Promise<void>
 
     /**
      * Downloads a file artifact from a bucket and returns the file artifact

@@ -18,7 +18,7 @@ export class TarGzCompressorService implements CompressorService {
         const tarStream = Readable.from(pack)
         const gzip = zlib.createGzip()
 
-        return streamToBuffer(tarStream.pipe(gzip))
+        return this.streamToBuffer(tarStream.pipe(gzip))
     }
 
     async decompress(archive: Buffer): Promise<FileArtifacts> {
@@ -44,13 +44,15 @@ export class TarGzCompressorService implements CompressorService {
 
         return result
     }
+
+    private streamToBuffer(stream: NodeJS.ReadableStream): Promise<Buffer> {
+        return new Promise((resolve, reject) => {
+                const chunks: Buffer[] = []
+                stream.on('data', chunk => chunks.push(chunk))
+                stream.on('end', () => resolve(Buffer.concat(chunks)))
+                stream.on('error', reject)
+        })
+    }
 }
 
-function streamToBuffer(stream: NodeJS.ReadableStream): Promise<Buffer> {
-    return new Promise((resolve, reject) => {
-            const chunks: Buffer[] = []
-            stream.on('data', chunk => chunks.push(chunk))
-            stream.on('end', () => resolve(Buffer.concat(chunks)))
-            stream.on('error', reject)
-    })
-}
+
