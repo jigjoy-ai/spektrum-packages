@@ -1,6 +1,6 @@
 {
     "name": "@honeycomb-app/file-artifacts",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "A TypeScript library for creating, managing, and persisting file artifacts",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
@@ -26,7 +26,6 @@
     "license": "MIT",
     "devDependencies": {
         "@types/node": "^24.3.0",
-        "@types/tar-stream": "^3.1.4",
         "rimraf": "^5.0.5",
         "tsup": "^8.0.2",
         "typescript": "^5.3.3"
@@ -34,7 +33,6 @@
     "dependencies": {
         "@aws-sdk/client-s3": "^3.878.0",
         "@aws-sdk/lib-storage": "^3.878.0",
-        "tar-stream": "^3.1.7",
         "uuid": "^11.1.0"
     }
 }

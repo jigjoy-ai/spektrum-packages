@@ -1,5 +1,3 @@
 export { FileArtifacts } from './file-artifacts'
-export { FileArtifactsStorage } from './ports/file-artifacts-storage'
 export { FileStorage } from './ports/file-storage'
-export { ArtifactStorageProvider } from './artifact-storage-provider'
 export { FileStorageProvider } from './file-storage-provider'
