@@ -1,0 +1,34 @@
+{
+    "name": "@jigjoy-io/serverless-core",
+    "version": "0.0.3",
+    "description": "A TypeScript library for serverless utility classes",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jigjoy-io/packages.git"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "author": "Miodrag Vilotijević",
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "prepublishOnly": "npm run build"
+    },
+    "keywords": [],
+    "license": "MIT",
+    "devDependencies": {
+        "tsup": "^8.0.2",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "ajv": "^8.17.1",
+        "ajv-formats": "^3.0.1"
+    }
+}
