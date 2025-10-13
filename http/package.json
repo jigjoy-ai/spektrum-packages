@@ -1,7 +1,7 @@
 {
-    "name": "@jigjoy-io/serverless-core",
+    "name": "@jigjoy-io/http",
     "version": "0.0.3",
-    "description": "A TypeScript library for serverless utility classes",
+    "description": "A TypeScript library for http utility classes",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
     "types": "dist/index.d.ts",

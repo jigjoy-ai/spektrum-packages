@@ -1,0 +1,11 @@
+{
+	"jsc": {
+		"transform": {
+			"react": {
+				"runtime": "automatic",
+				"importSource": "react",
+				"development": true
+			}
+		}
+	}
+}
