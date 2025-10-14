@@ -1,4 +1,4 @@
-const Responses = {
+export const Responses = {
 	_DefineResponse(statusCode = 502, data = {}) {
 		return {
 			headers: {
@@ -37,5 +37,3 @@ const Responses = {
 		return this._DefineResponse(500, data)
 	},
 }
-
-export default Responses
