@@ -1,4 +1,4 @@
-import { Responses } from "../api-responses"
+import Responses from "../api-responses"
 
 
 export function errorHandler(error: Error | unknown) {

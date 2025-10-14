@@ -1,3 +1,5 @@
 export * from './api-responses'
-export * from './errors'
+export * from './errors/error-handler'
+export * from './errors/not-found-error'
+export * from './errors/validation-error'
 export * from './validators/ajv/schema-validator'
