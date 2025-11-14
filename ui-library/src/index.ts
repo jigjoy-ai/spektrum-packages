@@ -1,6 +1,6 @@
 import "./index.css"
 
-export { HoneycombUIProvider } from "./providers/provider"
+export { JigJoyUIProvider } from "./providers/provider"
 export { AnimatedText } from "./components/animated-text/animated-text"
 export { Avatar } from "./components/avatar/avatar"
 export { Button } from "./components/button/button"
