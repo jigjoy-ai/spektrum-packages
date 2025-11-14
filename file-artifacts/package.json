@@ -1,6 +1,6 @@
 {
     "name": "@jigjoy-io/file-artifacts",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "A TypeScript library for creating, managing, and persisting file artifacts",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
