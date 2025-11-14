@@ -3,12 +3,12 @@ import { createContext, FC, ReactNode, useContext } from "react"
 const ThemeContext = createContext<{ theme: string }>({ theme: "light" })
 export const useTheme = () => useContext(ThemeContext)
 
-interface HoneycombUIProviderProps {
+interface JigJoyUIProviderProps {
 	children: ReactNode
 	theme?: string
 }
 
-const HoneycombUIProvider: FC<HoneycombUIProviderProps> = ({ children, theme = "light" }: HoneycombUIProviderProps) => {
+const JigJoyUIProvider: FC<JigJoyUIProviderProps> = ({ children, theme = "light" }: JigJoyUIProviderProps) => {
 	return (
 		<ThemeContext.Provider value={{ theme }}>
 			<div data-theme={theme}>{children}</div>
@@ -16,6 +16,6 @@ const HoneycombUIProvider: FC<HoneycombUIProviderProps> = ({ children, theme = "
 	)
 }
 
-HoneycombUIProvider.displayName = "HoneycombUIProvider"
+JigJoyUIProvider.displayName = "JigJoyUIProvider"
 
-export { HoneycombUIProvider }
+export { JigJoyUIProvider }

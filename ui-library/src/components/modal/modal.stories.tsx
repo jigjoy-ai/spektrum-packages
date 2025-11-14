@@ -4,7 +4,7 @@ import { ModalContent } from "./modal-content"
 import { ModalTrigger } from "./modal-trigger"
 import { Button } from "../button/button"
 import { useState, useContext } from "react"
-import { HoneycombUIProvider } from "../../providers/provider"
+import { JigJoyUIProvider } from "../../providers/provider"
 import ModalContext from "./modal-context"
 
 const meta: Meta<typeof Modal> = {
@@ -47,9 +47,9 @@ const CloseButton = () => {
 
 const App = () => {
 	return (
-		<HoneycombUIProvider theme="dark">
+		<JigJoyUIProvider theme="dark">
 			<ModalDemo />
-		</HoneycombUIProvider>
+		</JigJoyUIProvider>
 	)
 }
 
