@@ -1,2 +1,9 @@
-export * from "./src/file-artifacts"
-export * from "./src/artifact.dto"
+export type FileArtifacts = {
+    [filePath: string]: string
+}
+
+export type ArtifactDTO = { 
+	repositoryId: string, 
+	buildArtifacts: FileArtifacts, 
+	sourceCodeArtifacts: FileArtifacts
+}

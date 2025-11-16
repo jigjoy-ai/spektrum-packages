@@ -1,5 +1,6 @@
+
+import { ArtifactDTO } from "@jigjoy-io/types"
 import { PROJECT_ARTIFACTS_ENDPOINT } from "./config"
-import { ArtifactsDTO } from "./types"
 
 export class ProjectArtifactsClient {
 
@@ -29,29 +30,29 @@ export class ProjectArtifactsClient {
 		}
 	}
 
-    async saveArtifacts(artifacts: ArtifactsDTO): Promise<void> {
+    async saveArtifact(artifact: ArtifactDTO): Promise<void> {
 		try {
-			const response = await fetch(`${this.endpoint}/save-artifacts`, {
+			const response = await fetch(`${this.endpoint}/save-artifact`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-                body: JSON.stringify(artifacts)
+                body: JSON.stringify(artifact)
 			})
 
 			if (!response.ok) {
-				throw new Error(`Failed to save artifacts: ${response.statusText}`)
+				throw new Error(`Failed to save artifact: ${response.statusText}`)
 			}
 		} catch (error) {
-			console.error("Error saving artifacts:", error)
+			console.error("Error saving artifact:", error)
 			throw error
 		}
 	}
 
-    async fetchArtifacts(projectHistoryId: string): Promise<ArtifactsDTO> {
+    async fetchArtifact(projectHistoryId: string): Promise<ArtifactDTO> {
 
 		try {
-			const response = await fetch(`${this.endpoint}/fetch-artifacts/${projectHistoryId}`, {
+			const response = await fetch(`${this.endpoint}/fetch-artifact/${projectHistoryId}`, {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
@@ -59,12 +60,12 @@ export class ProjectArtifactsClient {
 			})
 
 			if (!response.ok) {
-				throw new Error(`Failed to fetch artifacts: ${response.statusText}`)
+				throw new Error(`Failed to fetch artifact: ${response.statusText}`)
 			}
 
-			return await response.json() as ArtifactsDTO
+			return await response.json() as ArtifactDTO
 		} catch (error) {
-			console.error("Error fetching artifacts:", error)
+			console.error("Error fetching artifact:", error)
 			throw error
 		}
 	}
