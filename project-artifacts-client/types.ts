@@ -1,4 +1,4 @@
-type FileArtifacts = {
+export type FileArtifacts = {
     [filePath: string]: string
 }
 
