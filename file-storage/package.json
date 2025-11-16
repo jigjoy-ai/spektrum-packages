@@ -1,7 +1,7 @@
 {
-    "name": "@jigjoy-io/file-artifacts",
-    "version": "0.0.4",
-    "description": "A TypeScript library for creating, managing, and persisting file artifacts",
+    "name": "@jigjoy-io/file-storage",
+    "version": "0.0.1",
+    "description": "A utility library for storing files.",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
     "types": "dist/index.d.ts",
@@ -24,7 +24,7 @@
     "keywords": [],
     "license": "MIT",
     "devDependencies": {
-        "@types/node": "^24.3.0",
+        "@types/node": "^24.10.1",
         "tsup": "^8.0.2",
         "typescript": "^5.3.3"
     },
