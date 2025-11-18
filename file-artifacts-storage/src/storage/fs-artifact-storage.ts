@@ -15,7 +15,7 @@ export class FileSystemArtifactsStorage extends FileArtifactsStorage {
     }
 
     async readFile(path: any): Promise<Buffer> {
-        const content = await this.fileSystem.readFile(path)
+        const content = await this.fileSystem.readFile(path, 'utf-8')
         return Buffer.from(content)
     }
 

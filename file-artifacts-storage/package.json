@@ -1,6 +1,6 @@
 {
     "name": "@jigjoy-io/file-artifacts-storage",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "A utility library for storing file artifacts on s3 bucket.",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
@@ -17,8 +17,7 @@
     },
     "author": "Miodrag Vilotijević",
     "scripts": {
-        "build": "tsup",
-        "dev": "tsup --watch",
+        "build": "tsup && tsc -p tsconfig.build.json",
         "prepublishOnly": "npm run build"
     },
     "keywords": [],

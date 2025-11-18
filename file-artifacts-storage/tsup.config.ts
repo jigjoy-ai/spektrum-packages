@@ -1,11 +1,19 @@
-import { defineConfig } from 'tsup'
+import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ['src/index.ts'],
-  format: ['cjs', 'esm'],
-  dts: false,
-  splitting: false,
+  entry: {
+    index: "src/index.ts",
+  },
+  outDir: "dist",
+  format: ["cjs", "esm"],
+  target: "node18",
   sourcemap: true,
   clean: true,
-  external: ["@aws-sdk/client-s3", "@aws-sdk/lib-storage"],
-}) 
+  splitting: false,
+  dts: false, // ✅ JS only, no declarations from tsup
+  external: [
+    "@aws-sdk/client-s3",
+    "@aws-sdk/lib-storage",
+    "fs-extra",
+  ],
+});
