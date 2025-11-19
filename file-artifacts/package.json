@@ -1,6 +1,6 @@
 {
     "name": "@jigjoy-io/file-artifacts",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "A utility library for working with file artifacts.",
     "main": "dist/index.js",
     "module": "dist/index.mjs",

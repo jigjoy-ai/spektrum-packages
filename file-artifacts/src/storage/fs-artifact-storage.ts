@@ -1,9 +1,9 @@
 
 import { CompressorService } from "../ports/compressor-service"
-import { FileArtifactsStorage } from "./file-artifacts-storage"
+import { Storage } from "./storage"
 import { FileSystemPort } from "../ports/file-system"
 
-export class FileSystemArtifactsStorage extends FileArtifactsStorage {
+export class FileSystemArtifactsStorage extends Storage {
 
 
     constructor(readonly fileSystem: FileSystemPort, compressor: CompressorService){

@@ -1,9 +1,9 @@
 
 import { S3Adapter } from "../adapters/s3"
 import { CompressorService } from "../ports/compressor-service"
-import { FileArtifactsStorage } from "./file-artifacts-storage"
+import { Storage } from "./storage"
 
-export class S3ArtifactsStorage extends FileArtifactsStorage {
+export class S3ArtifactsStorage extends Storage {
 
 
     constructor(readonly s3: S3Adapter, compressor: CompressorService) {

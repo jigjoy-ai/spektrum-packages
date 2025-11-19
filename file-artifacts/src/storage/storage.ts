@@ -1,7 +1,7 @@
 import { CompressorService } from "../ports/compressor-service"
 import { v4 as uuidV4 } from 'uuid'
 
-export abstract class FileArtifactsStorage {
+export abstract class Storage {
 
     constructor(readonly compressor: CompressorService){}
 
@@ -21,14 +21,14 @@ export abstract class FileArtifactsStorage {
 
 		const promises: any = []
 		for (const [fileName, content] of Object.entries(artifacts)) {
-	
+		
 			const path = `${folderName}/${fileName}`.replace(/\\/g, '/')
-	
+		
 			const promise = this.writeFile(path, content)
 		
 			promises.push(promise)
 		}
-	
+		
 		await Promise.all(promises)
     }
 
