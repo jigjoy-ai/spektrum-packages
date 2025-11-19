@@ -48,7 +48,3 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 ## Usage
 
 Once the setup is complete, you can start using JigJoy UI components in your React application.
-
-## License
-
-JigJoy UI is open-source and licensed under the MIT License.
