@@ -5,7 +5,6 @@ import { Storage } from "./storage"
 
 export class S3ArtifactsStorage extends Storage {
 
-
     constructor(readonly s3: S3Adapter, compressor: CompressorService) {
         super(compressor)
     }

@@ -11,13 +11,10 @@ Minimal toolkit for working with **FileArtifacts** — virtual collections of fi
 ### Store artifacts on the local filesystem
 
 ```ts
-import { LocalFileSystem } from "@jigjoy-io/file-artifacts/dist/adapters/local-file-system"
-import { TarGzCompressorService } from "@jigjoy-io/file-artifacts/dist/adapters/targz-compressor-service"
-import { FileSystemArtifactsStorage } from "@jigjoy-io/file-artifacts/dist/storage/fs-artifact-storage"
+import { FileSystemStorageFactory } from "@jigjoy-io/file-artifacts/dist/factories/fs-storage-factory"
 
-const fsPort = new LocalFileSystem()
-const compressor = new TarGzCompressorService()
-const storage = new FileSystemArtifactsStorage(fsPort, compressor)
+const factory = new FileSystemStorageFactory()
+const storage = factory.create()
 
 const artifacts = {
 	"dist/index.js": "// built bundle",
@@ -32,17 +29,14 @@ console.log(`Archive stored at ${archiveKey}`)
 ### Store artifacts in S3
 
 ```ts
-import { S3Adapter } from "@jigjoy-io/file-artifacts/dist/adapters/s3"
-import { TarGzCompressorService } from "@jigjoy-io/file-artifacts/dist/adapters/targz-compressor-service"
-import { S3ArtifactsStorage } from "@jigjoy-io/file-artifacts/dist/storage/s3-artifact-storage"
+import { S3StorageFactory } from "@jigjoy-io/file-artifacts/dist/factories/s3-storage-factory"
 
-const s3 = new S3Adapter(process.env.ARTIFACTS_BUCKET!)
-const compressor = new TarGzCompressorService()
-const storage = new S3ArtifactsStorage(s3, compressor)
+const factory = new S3StorageFactory(process.env.ARTIFACTS_BUCKET!)
+const storage = factory.create()
 
 await storage.writeAll("builds/2024-11-19", artifacts)
 const s3ArchivePath = await storage.writeArchive("archives/2024-11-19", artifacts)
 console.log(`Archive uploaded to s3://${process.env.ARTIFACTS_BUCKET}/${s3ArchivePath}`)
 ```
 
-Both adapters share the same `FileArtifactsStorage` interface, so switching between filesystem and S3 storage is a dependency swap rather than a rewrite.
+Both adapters now expose the same `StorageFactory` interface, so switching between filesystem and S3 storage is as simple as swapping factories.
