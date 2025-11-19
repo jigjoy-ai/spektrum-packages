@@ -1,7 +1,7 @@
 {
-    "name": "@jigjoy-io/project-artifacts-client",
-    "version": "0.0.3",
-    "description": "The SDK for working with project artifacts",
+    "name": "@jigjoy-io/project-versioning-client",
+    "version": "0.0.4",
+    "description": "The SDK for working with project versions",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
     "types": "dist/index.d.ts",
@@ -29,7 +29,6 @@
         "typescript": "^5.3.3"
     },
     "dependencies": {
-        "@jigjoy-io/types": "^0.0.9",
         "uuid": "^11.1.0"
     }
 }
