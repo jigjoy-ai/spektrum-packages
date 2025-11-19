@@ -1,4 +1,3 @@
-import { FileArtifacts } from "@jigjoy-io/types"
 
 export interface CompressorService {
 

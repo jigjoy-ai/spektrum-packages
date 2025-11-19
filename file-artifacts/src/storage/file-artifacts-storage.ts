@@ -1,4 +1,3 @@
-import { FileArtifacts } from "@jigjoy-io/types"
 import { CompressorService } from "../ports/compressor-service"
 import { v4 as uuidV4 } from 'uuid'
 
@@ -6,9 +5,9 @@ export abstract class FileArtifactsStorage {
 
     constructor(readonly compressor: CompressorService){}
 
-    abstract writeFile(path, content): Promise<void>
+    protected abstract writeFile(path, content): Promise<void>
 
-    abstract readFile(path): Promise<Buffer>
+    protected abstract readFile(path): Promise<Buffer>
 
     /**
      * Writes all file artifacts as individual files in the storage.
@@ -45,10 +44,10 @@ export abstract class FileArtifactsStorage {
     async writeArchive(folderName: string, artifacts: FileArtifacts): Promise<string> {
 
         const archive = await this.compressor.compress(artifacts)
-		const archiveId = uuidV4()
-		const archivePath =  `${folderName}/${archiveId}.tar.gz`
-		await this.writeFile(archivePath, archive)
-		return archivePath
+        const archiveId = uuidV4()
+        const archivePath =  `${folderName}/${archiveId}.tar.gz`
+        await this.writeFile(archivePath, archive)
+        return archivePath
 
     }
 
@@ -60,7 +59,7 @@ export abstract class FileArtifactsStorage {
      * @returns A promise that resolves to the extracted file artifacts.
      */
     async readArchive(archivePath: string): Promise<FileArtifacts> {
-        const buffer = await this.readFile(archivePath)
+      	const buffer = await this.readFile(archivePath)
 		return await this.compressor.decompress(buffer)
     }
 }

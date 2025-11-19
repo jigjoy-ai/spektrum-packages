@@ -1,6 +1,5 @@
 
 import { CompressorService } from '../ports/compressor-service'
-import { FileArtifacts } from '@jigjoy-io/types'
 import { Readable } from 'stream'
 import * as tar from 'tar-stream'
 import * as zlib from 'zlib'
