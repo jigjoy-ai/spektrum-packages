@@ -26,26 +26,32 @@ export class TarGzCompressorService implements CompressorService {
         const result: FileArtifacts = {}
         const extract = tar.extract()
         const gunzip = zlib.createGunzip()
-
+      
         extract.on('entry', (header, stream, next) => {
-            let content = ''
-            stream.on('data', chunk => (content += chunk.toString()))
-            stream.on('end', () => {
-                result[header.name] = content
-                next()
-            })
-            stream.resume()
+			let content = ''
+			stream.on('data', chunk => {
+				content += chunk.toString()
+			})
+			stream.on('end', () => {
+				result[header.name] = content
+				next()
+			})
+			stream.on('error', next)
+			stream.resume()
         })
-
-        await new Promise<void>((resolve, reject) => {
-            extract.on('finish', resolve)
-            extract.on('error', reject)
+      
+        const done = new Promise<void>((resolve, reject) => {
+			extract.on('finish', resolve)
+			extract.on('error', reject)
+			gunzip.on('error', reject)
         })
-
+      
         Readable.from(archive).pipe(gunzip).pipe(extract)
-
+      
+        await done
         return result
-    }
+      }
+      
 
 
 }

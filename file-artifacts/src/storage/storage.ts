@@ -7,7 +7,7 @@ export abstract class Storage {
 
     protected abstract writeFile(path, content): Promise<void>
 
-    protected abstract readFile(path): Promise<Buffer>
+    protected abstract readFile(path, encoding?): Promise<Buffer>
 
     /**
      * Writes all file artifacts as individual files in the storage.
