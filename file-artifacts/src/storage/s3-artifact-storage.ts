@@ -10,11 +10,11 @@ export class S3ArtifactsStorage extends Storage {
     }
 
     async writeFile(path: any, content: any): Promise<void> {
-        this.s3.upload(path, content)
+        await this.s3.upload(path, content)
     }
 
     async readFile(path: any): Promise<Buffer> {
-        return this.s3.download(path)
+        return await this.s3.download(path)
     }
 
 }

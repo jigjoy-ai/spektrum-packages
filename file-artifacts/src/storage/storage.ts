@@ -45,7 +45,7 @@ export abstract class Storage {
 
         const archive = await this.compressor.compress(artifacts)
         const archiveId = uuidV4()
-        const archivePath =  `${folderName}/${archiveId}.tar.gz`
+        const archivePath = `${folderName}/${archiveId}.tar.gz`
         await this.writeFile(archivePath, archive)
         return archivePath
 
