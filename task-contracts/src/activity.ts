@@ -12,7 +12,7 @@ export type CommentLeftMetadata = {
     commentText: string
 }
 
-export type CommentLeftActivityDTO = {
+export type CommentLeftActivity = {
     id: string
     type: ActivityType.COMMENT_LEFT
     projectId: string
@@ -28,7 +28,7 @@ export type DescriptionUpdatedMetadata = {
 	newDescription: string
 }
 
-export type DescriptionUpdatedActivityDTO = {
+export type DescriptionUpdatedActivity = {
     id: string
     type: ActivityType.DESCRIPTION_UPDATED
     projectId: string
@@ -43,7 +43,7 @@ export type FinishedWorkMetadata = {
     message: string
 }
   
-export type FinishedWorkActivityDTO = {
+export type FinishedWorkActivity = {
     id: string
     type: ActivityType.FINISHED_WORK
     projectId: string
@@ -58,7 +58,7 @@ export type StartedWorkMetadata = {
     message: string
 }
 
-export type StartedWorkActivityDTO = {
+export type StartedWorkActivity = {
     id: string
     type: ActivityType.STARTED_WORK
     projectId: string
@@ -74,7 +74,7 @@ export type TaskCreatedMetadata = {
 	description: string
 }
 
-export type TaskCreatedActivityDTO = {
+export type TaskCreatedActivity = {
     id: string
     type: ActivityType.TASK_CREATED
     projectId: string
@@ -90,7 +90,7 @@ export type TitleUpdatedMetadata = {
 	newTitle: string
 }
 
-export type TitleUpdatedActivityDTO = {
+export type TitleUpdatedActivity = {
     id: string
     type: ActivityType.TITLE_UPDATED
     projectId: string
@@ -108,11 +108,11 @@ export type ActivityMetadata =
     | TaskCreatedMetadata 
     | TitleUpdatedMetadata
 
-export type ActivityDTO =
-    | CommentLeftActivityDTO
-    | DescriptionUpdatedActivityDTO
-    | FinishedWorkActivityDTO
-    | StartedWorkActivityDTO
-    | TaskCreatedActivityDTO
-    | TitleUpdatedActivityDTO
+export type Activity =
+    | CommentLeftActivity
+    | DescriptionUpdatedActivity
+    | FinishedWorkActivity
+    | StartedWorkActivity
+    | TaskCreatedActivity
+    | TitleUpdatedActivity
   

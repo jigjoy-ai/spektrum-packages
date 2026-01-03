@@ -1,4 +1,4 @@
-import { ActivityDTO } from "./activity"
+import { Activity } from "./activity"
 
 export enum TaskStatus {
 	TODO = "Todo",
@@ -6,7 +6,7 @@ export enum TaskStatus {
 	DONE = "Done",
 }
 
-export type TaskDTO = {
+export type Task = {
 	id: string
 	title: string
 	description: string
@@ -14,5 +14,5 @@ export type TaskDTO = {
 	created: string
 	updated: string | null
 	status: TaskStatus
-	activities: ActivityDTO[]
+	activities: Activity[]
 }
