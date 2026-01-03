@@ -1,0 +1,31 @@
+{
+    "name": "@jigjoy-io/task-contracts",
+    "version": "0.0.1",
+    "description": "Shared contracts for JigJoy services",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jigjoy-io/packages.git"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "author": "Miodrag Vilotijević",
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "prepublishOnly": "npm run build"
+    },
+    "keywords": [],
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^24.7.2",
+        "tsup": "^8.0.2",
+        "typescript": "^5.3.3"
+    }
+}
