@@ -1,6 +1,6 @@
 {
 	"name": "@jigjoy-io/ai-coding-client",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "The SDK for ai coding",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -31,6 +31,7 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
+		"@jigjoy-io/task-contracts": "^0.0.2",
 		"axios": "^1.13.2"
 	}
 }

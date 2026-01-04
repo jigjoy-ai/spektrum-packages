@@ -43,4 +43,19 @@ export class AICodingClient {
 			throw error
 		}
 	}
+
+	async deployToProduction(projectId: string): Promise<{ moduleId: string, publicAppUrl: string }> {
+		try {
+			const requestBody = {
+				projectId: projectId,
+			}
+
+			const response = await axios.post(`${this.endpoint}/deploy-to-production`, requestBody)
+
+			return response.data
+		} catch (error) {
+			console.error("Error deploying to production:", error)
+			throw error
+		}
+	}
 }
