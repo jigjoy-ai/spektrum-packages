@@ -26,7 +26,7 @@ export const Chevron: FC<ChevronProps> = ({ children, defaultExpanded = false, c
 			<div
 				className={twMerge(
 					"flex flex-col bg-surface rounded-md h-full text-secondary-100 w-[325px] max-w-[325px] border border-secondary-100",
-					className
+					className,
 				)}
 			>
 				{children}

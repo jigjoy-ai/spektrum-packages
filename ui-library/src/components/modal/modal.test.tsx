@@ -35,7 +35,7 @@ describe("Modal Component", () => {
 				<ModalContent title="Test Modal">
 					<div>Modal Content</div>
 				</ModalContent>
-			</Modal>
+			</Modal>,
 		)
 
 		const backdrop = screen.getByText("Modal Content").parentElement?.parentElement?.parentElement
@@ -50,7 +50,7 @@ describe("Modal Component", () => {
 				<ModalContent title="Test Modal">
 					<div>Modal Content</div>
 				</ModalContent>
-			</Modal>
+			</Modal>,
 		)
 
 		const closeButton = screen.getByRole("button")

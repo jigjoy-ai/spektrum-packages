@@ -5,9 +5,7 @@ import { ProgressBar } from "./progress-bar"
 // Mock framer-motion
 jest.mock("framer-motion", () => ({
 	motion: {
-		div: ({ style, className }: any) => (
-			<div style={style} className={className} data-testid="motion-div" />
-		),
+		div: ({ style, className }: any) => <div style={style} className={className} data-testid="motion-div" />,
 	},
 }))
 
@@ -20,7 +18,7 @@ describe("ProgressBar Component", () => {
 	test("applies correct width based on progress", () => {
 		const { container } = render(<ProgressBar progress={75} />)
 		const progressElement = container.querySelector("[data-testid='motion-div']")
-		expect(progressElement).toHaveAttribute('style', expect.stringContaining('width: 75%'))
+		expect(progressElement).toHaveAttribute("style", expect.stringContaining("width: 75%"))
 	})
 
 	test("applies custom class names", () => {
@@ -32,10 +30,10 @@ describe("ProgressBar Component", () => {
 	test("clamps progress between 0 and 100", () => {
 		const { container: container1 } = render(<ProgressBar progress={-20} />)
 		const progressElement1 = container1.querySelector("[data-testid='motion-div']")
-		expect(progressElement1).toHaveAttribute('style', expect.stringContaining('width: 0%'))
+		expect(progressElement1).toHaveAttribute("style", expect.stringContaining("width: 0%"))
 
 		const { container: container2 } = render(<ProgressBar progress={120} />)
 		const progressElement2 = container2.querySelector("[data-testid='motion-div']")
-		expect(progressElement2).toHaveAttribute('style', expect.stringContaining('width: 100%'))
+		expect(progressElement2).toHaveAttribute("style", expect.stringContaining("width: 100%"))
 	})
 })

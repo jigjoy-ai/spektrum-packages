@@ -1,5 +1,5 @@
 /// <reference types="node" />
 
 type FileArtifacts = {
-    [filePath: string]: string
+	[filePath: string]: string
 }

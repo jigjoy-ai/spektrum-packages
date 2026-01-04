@@ -28,7 +28,7 @@ describe("Chip Component", () => {
 		const chip = screen.getByRole("button", { name: /default styles/i })
 
 		expect(chip).toHaveClass(
-			"bg-surface hover:bg-surface/80 px-2 py-1 rounded-sm h-fit w-fit text-xs text-secondary-100"
+			"bg-surface hover:bg-surface/80 px-2 py-1 rounded-sm h-fit w-fit text-xs text-secondary-100",
 		)
 	})
 

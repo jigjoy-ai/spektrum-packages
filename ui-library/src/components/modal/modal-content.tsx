@@ -64,7 +64,7 @@ const ModalPortal: React.FC<{ title: string; onClose: () => void; children: Reac
 			<motion.div
 				className={twMerge(
 					"bg-surface-light text-secondary p-6 rounded-lg shadow-lg relative border border-secondary-200 h-fit w-[90%] md:w-[400px]",
-					className
+					className,
 				)}
 				ref={modalRef}
 				initial={{ opacity: 0, scale: 0.9 }}
@@ -91,7 +91,7 @@ const ModalPortal: React.FC<{ title: string; onClose: () => void; children: Reac
 				{children}
 			</motion.div>
 		</motion.div>,
-		document.body
+		document.body,
 	)
 }
 

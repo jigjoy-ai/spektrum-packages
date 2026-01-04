@@ -58,12 +58,17 @@ const SmartInput: FC<SmartInputProps> = ({
 
 	return (
 		<SmartInputContext.Provider value={contextValue}>
-			<div className={twMerge("relative outline-none bg-surface-muted border border-secondary-200 rounded", className)}>
+			<div
+				className={twMerge(
+					"relative outline-none bg-surface-muted border border-secondary-200 rounded",
+					className,
+				)}
+			>
 				{isEmpty && (
 					<span
 						className={twMerge(
 							"absolute top-2 left-2 text-secondary/70 text-sm pointer-events-none",
-							placeholderClassName
+							placeholderClassName,
 						)}
 					>
 						{placeholder}
@@ -72,7 +77,7 @@ const SmartInput: FC<SmartInputProps> = ({
 				<p
 					className={twMerge(
 						"rounded-sm text-sm w-[400px] max-w-full p-2 resize-none min-h-20 h-auto overflow-hidden whitespace-pre-wrap focus:outline-none text-secondary",
-						className
+						className,
 					)}
 					contentEditable
 					suppressContentEditableWarning

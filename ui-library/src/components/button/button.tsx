@@ -58,7 +58,7 @@ const Button: FC<ButtonProps> = ({
 				sizeClasses[size],
 				variantClasses[variant],
 				(disabled || loading) && disabledClasses,
-				className
+				className,
 			)}
 			onClick={handleClick}
 			disabled={disabled || loading}

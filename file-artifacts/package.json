@@ -1,38 +1,40 @@
 {
-    "name": "@jigjoy-io/file-artifacts",
-    "version": "0.0.5",
-    "description": "A utility library for working with file artifacts.",
-    "main": "dist/index.js",
-    "module": "dist/index.mjs",
-    "types": "dist/index.d.ts",
-    "files": [
-        "dist"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jigjoy-io/packages.git"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
-    },
-    "author": "Miodrag Vilotijević",
-    "scripts": {
-        "build": "tsup && tsc -p tsconfig.build.json",
-        "prepublishOnly": "npm run build"
-    },
-    "keywords": [],
-    "license": "MIT",
-    "devDependencies": {
-        "@types/fs-extra": "^11.0.4",
-        "@types/node": "^24.10.1",
-        "tsup": "^8.0.2",
-        "typescript": "^5.3.3"
-    },
-    "dependencies": {
-        "@aws-sdk/client-s3": "^3.932.0",
-        "@aws-sdk/lib-storage": "^3.878.0",
-        "fs-extra": "^11.3.2",
-        "tar-stream": "^3.1.7",
-        "uuid": "^11.1.0"
-    }
+	"name": "@jigjoy-io/file-artifacts",
+	"version": "0.0.5",
+	"description": "A utility library for working with file artifacts.",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jigjoy-io/packages.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"author": "Miodrag Vilotijević",
+	"scripts": {
+		"build": "tsup && tsc -p tsconfig.build.json",
+		"prepublishOnly": "npm run build",
+		"format": "prettier --write \"src/**/*.{ts,tsx}\""
+	},
+	"keywords": [],
+	"license": "MIT",
+	"devDependencies": {
+		"@types/fs-extra": "^11.0.4",
+		"@types/node": "^24.10.1",
+		"prettier": "^3.7.4",
+		"tsup": "^8.0.2",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"@aws-sdk/client-s3": "^3.932.0",
+		"@aws-sdk/lib-storage": "^3.878.0",
+		"fs-extra": "^11.3.2",
+		"tar-stream": "^3.1.7",
+		"uuid": "^11.1.0"
+	}
 }

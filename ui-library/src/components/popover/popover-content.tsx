@@ -122,7 +122,7 @@ const PopoverContent: FC<PopoverContentProps> = ({ children }: PopoverContentPro
 				</motion.div>
 			)}
 		</AnimatePresence>,
-		document.body
+		document.body,
 	)
 }
 

@@ -315,7 +315,9 @@ export const WithExternalBlurHandler: Story = {
 			<div className="space-y-4">
 				<SmartInput {...args} value={value} onChange={setValue} onBlur={externalBlurHandler} />
 				<div className="text-sm space-y-2">
-					<div className="text-primary">External blur handler called: {externalBlurCalled ? "Yes" : "No"}</div>
+					<div className="text-primary">
+						External blur handler called: {externalBlurCalled ? "Yes" : "No"}
+					</div>
 					{externalBlurCalled && <div className="text-primary">Last value on blur: "{lastBlurValue}"</div>}
 				</div>
 			</div>

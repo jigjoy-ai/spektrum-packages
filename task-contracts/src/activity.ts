@@ -1,25 +1,25 @@
 export enum ActivityType {
-    COMMENT_LEFT = "COMMENT_LEFT",
-    DESCRIPTION_UPDATED = "DESCRIPTION_UPDATED",
-    FINISHED_WORK = "FINISHED_WORK",
+	COMMENT_LEFT = "COMMENT_LEFT",
+	DESCRIPTION_UPDATED = "DESCRIPTION_UPDATED",
+	FINISHED_WORK = "FINISHED_WORK",
 	STARTED_WORK = "STARTED_WORK",
 	TASK_CREATED = "TASK_CREATED",
-	TITLE_UPDATED = "TITLE_UPDATED"
+	TITLE_UPDATED = "TITLE_UPDATED",
 }
 
 export type CommentLeftMetadata = {
-    authorId: string
-    commentText: string
+	authorId: string
+	commentText: string
 }
 
 export type CommentLeftActivity = {
-    id: string
-    type: ActivityType.COMMENT_LEFT
-    projectId: string
-    taskId: string
-    userId: string
-    occurredAt: string 
-    metadata: CommentLeftMetadata
+	id: string
+	type: ActivityType.COMMENT_LEFT
+	projectId: string
+	taskId: string
+	userId: string
+	occurredAt: string
+	metadata: CommentLeftMetadata
 }
 
 export type DescriptionUpdatedMetadata = {
@@ -29,43 +29,43 @@ export type DescriptionUpdatedMetadata = {
 }
 
 export type DescriptionUpdatedActivity = {
-    id: string
-    type: ActivityType.DESCRIPTION_UPDATED
-    projectId: string
-    taskId: string
-    userId: string
-    occurredAt: string
-    metadata: DescriptionUpdatedMetadata
+	id: string
+	type: ActivityType.DESCRIPTION_UPDATED
+	projectId: string
+	taskId: string
+	userId: string
+	occurredAt: string
+	metadata: DescriptionUpdatedMetadata
 }
 
 export type FinishedWorkMetadata = {
-    workerId: string
-    message: string
+	workerId: string
+	message: string
 }
-  
+
 export type FinishedWorkActivity = {
-    id: string
-    type: ActivityType.FINISHED_WORK
-    projectId: string
-    taskId: string
-    userId: string
-    occurredAt: string
-    metadata: FinishedWorkMetadata
+	id: string
+	type: ActivityType.FINISHED_WORK
+	projectId: string
+	taskId: string
+	userId: string
+	occurredAt: string
+	metadata: FinishedWorkMetadata
 }
 
 export type StartedWorkMetadata = {
-    workerId: string
-    message: string
+	workerId: string
+	message: string
 }
 
 export type StartedWorkActivity = {
-    id: string
-    type: ActivityType.STARTED_WORK
-    projectId: string
-    taskId: string
-    userId: string
-    occurredAt: string
-    metadata: StartedWorkMetadata
+	id: string
+	type: ActivityType.STARTED_WORK
+	projectId: string
+	taskId: string
+	userId: string
+	occurredAt: string
+	metadata: StartedWorkMetadata
 }
 
 export type TaskCreatedMetadata = {
@@ -75,13 +75,13 @@ export type TaskCreatedMetadata = {
 }
 
 export type TaskCreatedActivity = {
-    id: string
-    type: ActivityType.TASK_CREATED
-    projectId: string
-    taskId: string
-    userId: string
-    occurredAt: string
-    metadata: TaskCreatedMetadata
+	id: string
+	type: ActivityType.TASK_CREATED
+	projectId: string
+	taskId: string
+	userId: string
+	occurredAt: string
+	metadata: TaskCreatedMetadata
 }
 
 export type TitleUpdatedMetadata = {
@@ -91,28 +91,27 @@ export type TitleUpdatedMetadata = {
 }
 
 export type TitleUpdatedActivity = {
-    id: string
-    type: ActivityType.TITLE_UPDATED
-    projectId: string
-    taskId: string
-    userId: string
-    occurredAt: string
-    metadata: TitleUpdatedMetadata
+	id: string
+	type: ActivityType.TITLE_UPDATED
+	projectId: string
+	taskId: string
+	userId: string
+	occurredAt: string
+	metadata: TitleUpdatedMetadata
 }
 
-export type ActivityMetadata = 
-    | CommentLeftMetadata 
-    | DescriptionUpdatedMetadata 
-    | FinishedWorkMetadata 
-    | StartedWorkMetadata 
-    | TaskCreatedMetadata 
-    | TitleUpdatedMetadata
+export type ActivityMetadata =
+	| CommentLeftMetadata
+	| DescriptionUpdatedMetadata
+	| FinishedWorkMetadata
+	| StartedWorkMetadata
+	| TaskCreatedMetadata
+	| TitleUpdatedMetadata
 
 export type Activity =
-    | CommentLeftActivity
-    | DescriptionUpdatedActivity
-    | FinishedWorkActivity
-    | StartedWorkActivity
-    | TaskCreatedActivity
-    | TitleUpdatedActivity
-  
+	| CommentLeftActivity
+	| DescriptionUpdatedActivity
+	| FinishedWorkActivity
+	| StartedWorkActivity
+	| TaskCreatedActivity
+	| TitleUpdatedActivity

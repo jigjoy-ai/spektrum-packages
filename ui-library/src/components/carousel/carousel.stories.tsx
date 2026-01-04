@@ -66,17 +66,26 @@ export const SingleItemView: Story = {
 			<Carousel maxVisibleItems={1}>
 				<CarouselItem>
 					<Card className="h-full">
-						<CardContent title="Step One" description="Begin your journey with our intuitive onboarding process." />
+						<CardContent
+							title="Step One"
+							description="Begin your journey with our intuitive onboarding process."
+						/>
 					</Card>
 				</CarouselItem>
 				<CarouselItem>
 					<Card className="h-full">
-						<CardContent title="Step Two" description="Configure your workspace with powerful customization options." />
+						<CardContent
+							title="Step Two"
+							description="Configure your workspace with powerful customization options."
+						/>
 					</Card>
 				</CarouselItem>
 				<CarouselItem>
 					<Card className="h-full">
-						<CardContent title="Step Three" description="Connect with team members and start collaborating." />
+						<CardContent
+							title="Step Three"
+							description="Connect with team members and start collaborating."
+						/>
 					</Card>
 				</CarouselItem>
 			</Carousel>
@@ -90,17 +99,26 @@ export const SingleItemViewWithDots: Story = {
 			<Carousel maxVisibleItems={1} showDots={true}>
 				<CarouselItem>
 					<Card className="h-full">
-						<CardContent title="Step One" description="Begin your journey with our intuitive onboarding process." />
+						<CardContent
+							title="Step One"
+							description="Begin your journey with our intuitive onboarding process."
+						/>
 					</Card>
 				</CarouselItem>
 				<CarouselItem>
 					<Card className="h-full">
-						<CardContent title="Step Two" description="Configure your workspace with powerful customization options." />
+						<CardContent
+							title="Step Two"
+							description="Configure your workspace with powerful customization options."
+						/>
 					</Card>
 				</CarouselItem>
 				<CarouselItem>
 					<Card className="h-full">
-						<CardContent title="Step Three" description="Connect with team members and start collaborating." />
+						<CardContent
+							title="Step Three"
+							description="Connect with team members and start collaborating."
+						/>
 					</Card>
 				</CarouselItem>
 			</Carousel>
@@ -114,7 +132,10 @@ export const TwoVisibleItems: Story = {
 			<Carousel maxVisibleItems={2}>
 				<CarouselItem>
 					<Card className="h-full">
-						<CardContent title="Product One" description="Premium quality materials ensure durability and comfort." />
+						<CardContent
+							title="Product One"
+							description="Premium quality materials ensure durability and comfort."
+						/>
 					</Card>
 				</CarouselItem>
 				<CarouselItem>
@@ -129,7 +150,10 @@ export const TwoVisibleItems: Story = {
 				</CarouselItem>
 				<CarouselItem>
 					<Card className="h-full">
-						<CardContent title="Product Four" description="Sustainable materials for eco-conscious consumers." />
+						<CardContent
+							title="Product Four"
+							description="Sustainable materials for eco-conscious consumers."
+						/>
 					</Card>
 				</CarouselItem>
 				<CarouselItem>

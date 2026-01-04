@@ -1,6 +1,5 @@
 import { Responses } from "../api-responses"
 
-
 export function errorHandler(error: Error | unknown) {
 	console.error(error)
 

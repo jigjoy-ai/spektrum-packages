@@ -42,7 +42,9 @@ const Popover: FC<PopoverProps> = ({
 	}
 
 	return (
-		<PopoverContext.Provider value={contextValue}>{Children.map(children, (child) => child)}</PopoverContext.Provider>
+		<PopoverContext.Provider value={contextValue}>
+			{Children.map(children, (child) => child)}
+		</PopoverContext.Provider>
 	)
 }
 

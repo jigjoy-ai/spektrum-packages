@@ -21,7 +21,10 @@ export const CarouselDots: FC<CarouselDotsProps> = ({ totalItems, currentIndex, 
 					role="tab"
 					aria-selected={currentIndex === index}
 					aria-label={`Slide ${index + 1}`}
-					className={twMerge("w-2 h-2 rounded-full", currentIndex === index ? "bg-secondary" : "bg-secondary-200")}
+					className={twMerge(
+						"w-2 h-2 rounded-full",
+						currentIndex === index ? "bg-secondary" : "bg-secondary-200",
+					)}
 					initial={false}
 					animate={{
 						scale: currentIndex === index ? 1.2 : 1,

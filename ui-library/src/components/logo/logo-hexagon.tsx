@@ -30,7 +30,7 @@ const LogoHexagon: FC<LogoHexagonProps> = ({
 		? {
 				stroke: strokeColor,
 				strokeWidth: strokeWidth,
-		  }
+			}
 		: {}
 
 	return (

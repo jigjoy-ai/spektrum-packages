@@ -15,7 +15,12 @@ export const SmartFooter: FC<SmartFooterProps> = ({ children, className = "" }: 
 	}
 
 	return (
-		<div className={twMerge("border-t border-secondary-200 bottom-2 right-2 bg-surface-light h-fit p-1.5", className)}>
+		<div
+			className={twMerge(
+				"border-t border-secondary-200 bottom-2 right-2 bg-surface-light h-fit p-1.5",
+				className,
+			)}
+		>
 			{children}
 		</div>
 	)

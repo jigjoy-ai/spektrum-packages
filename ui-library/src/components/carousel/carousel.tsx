@@ -97,7 +97,12 @@ export const Carousel: FC<CarouselProps> = ({
 	return (
 		<div className={twMerge("flex flex-col w-full", className)}>
 			<div className="flex items-center gap-4 w-full">
-				<Button variant="secondary" onClick={handlePrevious} disabled={isFirstItemVisible} aria-label="Previous item">
+				<Button
+					variant="secondary"
+					onClick={handlePrevious}
+					disabled={isFirstItemVisible}
+					aria-label="Previous item"
+				>
 					←
 				</Button>
 

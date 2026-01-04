@@ -28,13 +28,13 @@ const Tooltip: FC<TooltipProps> = ({ children, message, className }: TooltipProp
 						<div
 							className={twMerge(
 								"-translate-x-[50%] text-sm p-1 px-3 rounded-sm bg-black !text-secondary shadow",
-								className
+								className,
 							)}
 						>
 							<div>{message}</div>
 						</div>
 					</div>,
-					document.body
+					document.body,
 				)}
 
 			<div onMouseEnter={toggle} onMouseLeave={toggle} className="w-fit h-fit">

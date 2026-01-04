@@ -13,8 +13,16 @@ interface InputProps extends HTMLMotionProps<"input"> {
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
 	(
-		{ type = "text", className = "", placeholder = "", onChange = (e) => {}, onBlur = (e) => {}, value = "", ...props },
-		ref
+		{
+			type = "text",
+			className = "",
+			placeholder = "",
+			onChange = (e) => {},
+			onBlur = (e) => {},
+			value = "",
+			...props
+		},
+		ref,
 	) => {
 		const [internalValue, setInternalValue] = useState(value)
 
@@ -35,14 +43,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 				value={internalValue}
 				className={twMerge(
 					"w-[320px] px-4 py-2 bg-surface text-secondary text-sm placeholder:text-secondary placeholder:opacity-70 rounded-lg outline-none focus:ring-1 focus:ring-secondary-200",
-					className
+					className,
 				)}
 				onChange={handleChange}
 				onBlur={onBlur}
 				{...props}
 			/>
 		)
-	}
+	},
 )
 
 Input.displayName = "Input"

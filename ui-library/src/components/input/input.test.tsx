@@ -50,7 +50,7 @@ describe("Input Component", () => {
 		const input = screen.getByRole("textbox")
 
 		expect(input).toHaveClass(
-			"w-[320px] px-4 py-2 bg-surface text-secondary text-sm placeholder:text-secondary placeholder:opacity-70 rounded-lg outline-none focus:ring-1 focus:ring-secondary-200"
+			"w-[320px] px-4 py-2 bg-surface text-secondary text-sm placeholder:text-secondary placeholder:opacity-70 rounded-lg outline-none focus:ring-1 focus:ring-secondary-200",
 		)
 	})
 

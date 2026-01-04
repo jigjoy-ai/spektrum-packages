@@ -24,7 +24,7 @@ const Chip: FC<ChipProps> = ({ label, onClick, delay = 0, className = "" }: Chip
 			onClick={onClick}
 			className={twMerge(
 				"bg-surface hover:bg-surface/80 px-2 py-1 rounded-sm h-fit w-fit text-xs text-secondary-100",
-				className
+				className,
 			)}
 		>
 			{label}

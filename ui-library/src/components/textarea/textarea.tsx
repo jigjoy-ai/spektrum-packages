@@ -14,7 +14,7 @@ interface TextareaProps extends HTMLMotionProps<"textarea"> {
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 	(
 		{ className = "", rows = 3, placeholder = "", value = "", onChange = (e) => {}, onBlur = (e) => {}, ...props },
-		ref
+		ref,
 	) => {
 		const [internalValue, setInternalValue] = useState(value)
 
@@ -43,7 +43,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				value={internalValue}
 				className={twMerge(
 					"mb-6 w-[320px] px-4 py-2 bg-surface text-secondary placeholder:text-secondary placeholder:opacity-70 rounded-lg outline-none focus:ring-1 focus:ring-secondary-200",
-					className
+					className,
 				)}
 				onChange={handleChange}
 				onBlur={onBlur}
@@ -52,7 +52,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 				{...props}
 			/>
 		)
-	}
+	},
 )
 
 Textarea.displayName = "Textarea"

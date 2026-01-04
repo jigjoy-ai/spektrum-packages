@@ -25,12 +25,12 @@ const Tabs: FC<TabsProps> = ({ children, className }: TabsProps) => {
                                 relative px-4 py-2 text-sm font-medium
                                 rounded-t-md
                                 ${
-																	isActive
-																		? "text-secondary bg-surface"
-																		: "text-secondary-100 cursor-pointer bg-surface-light hover:text-hover"
-																}
+									isActive
+										? "text-secondary bg-surface"
+										: "text-secondary-100 cursor-pointer bg-surface-light hover:text-hover"
+								}
                             `,
-								className
+								className,
 							)}
 						>
 							{child.key}
