@@ -8,6 +8,41 @@ export class ObservabilityClient {
 		this.endpoint = endpoint
 	}
 
+	async taskExecutionStarted(title: string, projectId: string, taskId: string, accountId: string): Promise<TaskExecution> {
+		try {
+
+			const taskExecution = {
+				title: title,
+				projectId: projectId,
+				taskId: taskId,
+				accountId: accountId,
+			}
+			const response = await axios.post(`${this.endpoint}/task-execution/started`, taskExecution)
+			return response.data as TaskExecution
+		} catch (error) {
+			console.error("Error starting task execution:", error)
+			throw error
+		}
+	}
+
+	async taskExecutionSucceeded(taskExecutionId: string): Promise<void> {
+		try {
+			await axios.post(`${this.endpoint}/task-execution/finished`, { taskExecutionId: taskExecutionId })
+		} catch (error) {
+			console.error("Error succeeded task execution:", error)
+			throw error
+		}
+	}
+
+	async taskExecutionFailed(taskExecutionId: string, error: string): Promise<void> {
+		try {
+			await axios.post(`${this.endpoint}/task-execution/finished-with-error`, { taskExecutionId: taskExecutionId, error: error })
+		} catch (error) {
+			console.error("Error failed task execution:", error)
+			throw error
+		}
+	}
+
 	async getAccountExecutions(accountId: string, pagination: Pagination): Promise<TaskExecution[]> {
 		try {
 			const url = new URL(`${this.endpoint}/task-execution/account/${accountId}`)

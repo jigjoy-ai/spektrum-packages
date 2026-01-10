@@ -1,6 +1,6 @@
 {
 	"name": "@jigjoy-io/observability-client",
-	"version": "0.0.2",
+	"version": "0.0.5",
 	"description": "The SDK for observability",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
