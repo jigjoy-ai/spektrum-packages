@@ -33,9 +33,9 @@ export class AICodingClient {
 		}
 	}
 
-	async develop(task: Task): Promise<void> {
+	async develop(task: Task, accountId: string): Promise<void> {
 		try {
-			const response = await axios.post(`${this.endpoint}/develop`, task)
+			const response = await axios.post(`${this.endpoint}/develop`, { task: task, accountId: accountId })
 
 			return response.data
 		} catch (error) {
