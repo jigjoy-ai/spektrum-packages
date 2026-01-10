@@ -8,7 +8,7 @@ export class ObservabilityClient {
 		this.endpoint = endpoint
 	}
 
-	async startTaskExecution(title: string, projectId: string, taskId: string, accountId: string): Promise<void> {
+	async taskExecutionStarted(title: string, projectId: string, taskId: string, accountId: string): Promise<TaskExecution> {
 		try {
 
 			const taskExecution = {
@@ -17,9 +17,28 @@ export class ObservabilityClient {
 				taskId: taskId,
 				accountId: accountId,
 			}
-			await axios.post(`${this.endpoint}/task-execution/start`, taskExecution)
+			const response = await axios.post(`${this.endpoint}/task-execution/started`, taskExecution)
+			return response.data as TaskExecution
 		} catch (error) {
 			console.error("Error starting task execution:", error)
+			throw error
+		}
+	}
+
+	async taskExecutionSucceeded(taskExecutionId: string): Promise<void> {
+		try {
+			await axios.post(`${this.endpoint}/task-execution/finished`, { taskExecutionId: taskExecutionId })
+		} catch (error) {
+			console.error("Error succeeded task execution:", error)
+			throw error
+		}
+	}
+
+	async taskExecutionFailed(taskExecutionId: string, error: string): Promise<void> {
+		try {
+			await axios.post(`${this.endpoint}/task-execution/finished-with-error`, { taskExecutionId: taskExecutionId, error: error })
+		} catch (error) {
+			console.error("Error failed task execution:", error)
 			throw error
 		}
 	}
