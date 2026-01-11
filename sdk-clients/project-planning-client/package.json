@@ -1,6 +1,6 @@
 {
 	"name": "@jigjoy-io/project-planning-client",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "The SDK for project planning",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -31,6 +31,7 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
+		"@jigjoy-io/task-contracts": "^0.0.2",
 		"axios": "^1.13.2"
 	}
 }
