@@ -1,6 +1,6 @@
 import { ActivityType, Task } from "@jigjoy-io/task-contracts"
-import axios from "axios"
 import { ProjectNotFoundError } from "./types"
+import axios from "axios"
 
 export class ProjectPlanningClient {
 	private readonly endpoint: string
@@ -73,7 +73,7 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async createTask(projectId: string, title: string, description: string): Promise<any> {
+	async createTask(projectId: string, title: string, description: string): Promise<Task> {
 		try {
 			const requestBody = {
 				projectId: projectId,
@@ -81,37 +81,37 @@ export class ProjectPlanningClient {
 				description: description,
 			}
 			const response = await axios.post(`${this.endpoint}/task`, requestBody)
-			return response.data
+			return response.data as Task
 		} catch (error) {
 			console.error("Error creating task:", error)
 			throw error
 		}
 	}
 
-	async updateTaskTitle(task: Task): Promise<any> {
+	async updateTaskTitle(task: Task): Promise<Task> {
 		try {
 			const response = await axios.put(`${this.endpoint}/task/title`, task)
-			return response.data
+			return response.data as Task
 		} catch (error) {
 			console.error("Error updating task title:", error)
 			throw error
 		}
 	}
 
-	async updateTaskDescription(task: Task): Promise<any> {
+	async updateTaskDescription(task: Task): Promise<Task> {
 		try {
 			const response = await axios.put(`${this.endpoint}/task/description`, task)
-			return response.data
+			return response.data as Task
 		} catch (error) {
 			console.error("Error updating task description:", error)
 			throw error
 		}
 	}
 
-	async fetchAllTasks(projectId: string): Promise<any> {
+	async fetchAllTasks(projectId: string): Promise<Task[]> {
 		try {
 			const response = await axios.get(`${this.endpoint}/task/fetch-all/${projectId}`)
-			return response.data
+			return response.data as Task[]
 		} catch (error) {
 			console.error("Error fetching all tasks:", error)
 			throw error
