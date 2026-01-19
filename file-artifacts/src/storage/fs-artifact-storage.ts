@@ -3,6 +3,7 @@ import { Storage } from "./storage"
 import { FileSystemPort } from "../ports/file-system"
 
 export class FileSystemArtifactsStorage extends Storage {
+
 	constructor(
 		readonly fileSystem: FileSystemPort,
 		compressor: CompressorService,
@@ -17,5 +18,9 @@ export class FileSystemArtifactsStorage extends Storage {
 	async readFile(path: any): Promise<Buffer> {
 		const content = await this.fileSystem.readFile(path, "utf-8")
 		return Buffer.from(content)
+	}
+
+	async deleteFolder(folderPath: string): Promise<void> {
+		await this.fileSystem.removeDir(folderPath)
 	}
 }

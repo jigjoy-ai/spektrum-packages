@@ -3,6 +3,7 @@ import { Readable } from "stream"
 import * as tar from "tar-stream"
 import * as zlib from "zlib"
 import { StreamConverter } from "../utils/stream-converter"
+import { FileArtifacts } from "../types/file-artifacts"
 
 export class TarGzCompressorService implements CompressorService {
 	async compress(files: FileArtifacts): Promise<Buffer> {

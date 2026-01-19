@@ -1,3 +1,5 @@
+import { FileArtifacts } from "../types/file-artifacts"
+
 export interface CompressorService {
 	/**
 	 * Compresses a file artifact and returns a buffer

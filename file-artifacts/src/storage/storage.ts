@@ -1,5 +1,6 @@
 import { CompressorService } from "../ports/compressor-service"
 import { v4 as uuidV4 } from "uuid"
+import { FileArtifacts } from "../types/file-artifacts"
 
 export abstract class Storage {
 	constructor(readonly compressor: CompressorService) {}
@@ -7,6 +8,8 @@ export abstract class Storage {
 	protected abstract writeFile(path, content): Promise<void>
 
 	protected abstract readFile(path, encoding?): Promise<Buffer>
+
+	abstract deleteFolder(folderPath: string): Promise<void>
 
 	/**
 	 * Writes all file artifacts as individual files in the storage.

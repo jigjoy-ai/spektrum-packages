@@ -17,4 +17,8 @@ export class S3ArtifactsStorage extends Storage {
 	async readFile(path: any): Promise<Buffer> {
 		return await this.s3.download(path)
 	}
+
+	async deleteFolder(folderPath: string): Promise<void> {
+		await this.s3.deleteFolder(folderPath)
+	}
 }

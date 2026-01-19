@@ -1,5 +1,5 @@
 import { Upload } from "@aws-sdk/lib-storage"
-import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3"
+import { DeleteObjectsCommand, GetObjectCommand, ListObjectsV2Command, S3Client } from "@aws-sdk/client-s3"
 import { Readable } from "stream"
 import { StreamConverter } from "../utils/stream-converter"
 import { S3Port } from "../ports/s3"
@@ -73,4 +73,38 @@ export class S3Adapter implements S3Port {
 
 		return await StreamConverter.toBuffer(response.Body)
 	}
+	
+	async deleteFolder(folderPath: string): Promise<void> {
+		let isTruncated = true
+		let continuationToken
+		
+		while (isTruncated) {
+			// 1. List objects with the specific prefix
+			const listParams = {
+				Bucket: this.bucket,
+				Prefix: folderPath,
+				ContinuationToken: continuationToken
+			}
+			const listResponse = await this.s3.send(new ListObjectsV2Command(listParams))
+		
+			if (listResponse.Contents && listResponse.Contents.length > 0) {
+				// 2. Format keys for the batch delete
+				const deleteParams = {
+					Bucket: this.bucket,
+					Delete: {
+						Objects: listResponse.Contents.map((obj) => ({ Key: obj.Key })),
+						Quiet: false,
+					},
+				}
+			
+				// 3. Execute batch delete (up to 1,000 objects per call)
+				await this.s3.send(new DeleteObjectsCommand(deleteParams))
+			}
+		
+			// 4. Check if there are more objects to process
+			isTruncated = listResponse.IsTruncated ?? false
+			continuationToken = listResponse.NextContinuationToken
+		}
+	}
+	
 }
