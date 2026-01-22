@@ -27,6 +27,10 @@ export const Responses = {
 		return this._DefineResponse(204, data)
 	},
 
+	_301(data = {}) {
+		return this._DefineResponse(301, data)
+	},
+
 	_400(data = {}) {
 		return this._DefineResponse(400, data)
 	},
