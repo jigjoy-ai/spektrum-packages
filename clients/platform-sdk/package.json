@@ -1,0 +1,41 @@
+{
+	"name": "@jigjoy-io/platform-sdk",
+	"version": "0.0.1",
+	"description": "The SDK for vibe coding platform",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jigjoy-io/packages.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"author": "Miodrag Vilotijević",
+	"scripts": {
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"prepublishOnly": "npm run build",
+		"format": "prettier --write \"src/**/*.{ts,tsx}\""
+	},
+	"keywords": [],
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^24.3.0",
+		"prettier": "^3.7.4",
+		"tsup": "^8.0.2",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"@jigjoy-io/account-and-billing-client": "^0.0.1",
+		"@jigjoy-io/ai-coding-client": "^0.0.10",
+		"@jigjoy-io/observability-client": "^0.0.6",
+		"@jigjoy-io/project-deployment-client": "^0.0.9",
+		"@jigjoy-io/project-planning-client": "^0.0.6",
+		"axios": "^1.13.2"
+	}
+}
