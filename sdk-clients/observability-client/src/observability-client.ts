@@ -17,7 +17,7 @@ export class ObservabilityClient {
 				taskId: taskId,
 				accountId: accountId,
 			}
-			const response = await axios.post(`${this.endpoint}/task-execution/started`, taskExecution)
+			const response = await axios.post(`${this.endpoint}/observability/task-execution/started`, taskExecution)
 			return response.data as TaskExecution
 		} catch (error) {
 			console.error("Error starting task execution:", error)
@@ -27,7 +27,7 @@ export class ObservabilityClient {
 
 	async taskExecutionSucceeded(taskExecutionId: string): Promise<void> {
 		try {
-			await axios.post(`${this.endpoint}/task-execution/finished`, { taskExecutionId: taskExecutionId })
+			await axios.post(`${this.endpoint}/observability/task-execution/finished`, { taskExecutionId: taskExecutionId })
 		} catch (error) {
 			console.error("Error succeeded task execution:", error)
 			throw error
@@ -36,7 +36,7 @@ export class ObservabilityClient {
 
 	async taskExecutionFailed(taskExecutionId: string, error: string): Promise<void> {
 		try {
-			await axios.post(`${this.endpoint}/task-execution/finished-with-error`, { taskExecutionId: taskExecutionId, error: error })
+			await axios.post(`${this.endpoint}/observability/task-execution/finished-with-error`, { taskExecutionId: taskExecutionId, error: error })
 		} catch (error) {
 			console.error("Error failed task execution:", error)
 			throw error
@@ -45,7 +45,7 @@ export class ObservabilityClient {
 
 	async getAccountExecutions(accountId: string, pagination: Pagination): Promise<TaskExecution[]> {
 		try {
-			const url = new URL(`${this.endpoint}/task-execution/account/${accountId}`)
+			const url = new URL(`${this.endpoint}/observability/task-execution/account/${accountId}`)
 			url.searchParams.append("page", String(pagination.pageNumber))
 			url.searchParams.append("size", String(pagination.pageSize))
 			const response = await axios.get(url.toString())
@@ -59,7 +59,7 @@ export class ObservabilityClient {
 
 	async getProjectExecutions(projectId: string, pagination: Pagination): Promise<TaskExecution[]> {
 		try {
-			const url = new URL(`${this.endpoint}/task-execution/project/${projectId}`)
+			const url = new URL(`${this.endpoint}/observability/task-execution/project/${projectId}`)
 			url.searchParams.append("page", String(pagination.pageNumber))
 			url.searchParams.append("size", String(pagination.pageSize))
 			const response = await axios.get(url.toString())
@@ -74,7 +74,7 @@ export class ObservabilityClient {
 	async getHeatmap(accountId: string, timeRange: TimeRange): Promise<Heatmap[]> {
 		try {
 
-			const url = new URL(`${this.endpoint}/task-execution/heatmap/account/${accountId}`)
+			const url = new URL(`${this.endpoint}/observability/task-execution/heatmap/account/${accountId}`)
 			url.searchParams.append("startDate", timeRange.startDate)
 			url.searchParams.append("endDate", timeRange.endDate)
 			const response = await axios.get(url.toString())
