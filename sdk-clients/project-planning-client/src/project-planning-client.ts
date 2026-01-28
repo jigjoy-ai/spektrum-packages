@@ -14,7 +14,7 @@ export class ProjectPlanningClient {
 			const requestBody = {
 				owner: owner,
 			}
-			const response = await axios.post(`${this.endpoint}/project`, requestBody)
+			const response = await axios.post(`${this.endpoint}/planning/project`, requestBody)
 			return response.data
 		} catch (error) {
 			console.error("Error creating project:", error)
@@ -29,7 +29,7 @@ export class ProjectPlanningClient {
 				name: name,
 				description: description,
 			}
-			const response = await axios.put(`${this.endpoint}/project`, requestBody)
+			const response = await axios.put(`${this.endpoint}/planning/project`, requestBody)
 			return response.data
 		} catch (error) {
 			console.error("Error updating project details:", error)
@@ -39,7 +39,7 @@ export class ProjectPlanningClient {
 
 	async fetchProject(id: string): Promise<any> {
 		try {
-			const response = await axios.get(`${this.endpoint}/project/fetch/${id}`)
+			const response = await axios.get(`${this.endpoint}/planning/project/fetch/${id}`)
 			return response.data
 		} catch (error: any) {
 			if (error.response?.status === 404) {
@@ -52,7 +52,7 @@ export class ProjectPlanningClient {
 
 	async fetchAllProjects(owner: string): Promise<any> {
 		try {
-			const response = await axios.get(`${this.endpoint}/project/fetch-all/${owner}`)
+			const response = await axios.get(`${this.endpoint}/planning/project/fetch-all/${owner}`)
 			return response.data
 		} catch (error) {
 			console.error("Error fetching all projects:", error)
@@ -65,7 +65,7 @@ export class ProjectPlanningClient {
 			const requestBody = {
 				projectId: projectId,
 			}
-			const response = await axios.put(`${this.endpoint}/project/archive`, requestBody)
+			const response = await axios.put(`${this.endpoint}/planning/project/archive`, requestBody)
 			return response.data
 		} catch (error) {
 			console.error("Error archiving project:", error)
@@ -80,7 +80,7 @@ export class ProjectPlanningClient {
 				title: title,
 				description: description,
 			}
-			const response = await axios.post(`${this.endpoint}/task`, requestBody)
+			const response = await axios.post(`${this.endpoint}/planning/task`, requestBody)
 			return response.data as Task
 		} catch (error) {
 			console.error("Error creating task:", error)
@@ -90,7 +90,7 @@ export class ProjectPlanningClient {
 
 	async updateTaskTitle(task: Task): Promise<Task> {
 		try {
-			const response = await axios.put(`${this.endpoint}/task/title`, task)
+			const response = await axios.put(`${this.endpoint}/planning/task/title`, task)
 			return response.data as Task
 		} catch (error) {
 			console.error("Error updating task title:", error)
@@ -100,7 +100,7 @@ export class ProjectPlanningClient {
 
 	async updateTaskDescription(task: Task): Promise<Task> {
 		try {
-			const response = await axios.put(`${this.endpoint}/task/description`, task)
+			const response = await axios.put(`${this.endpoint}/planning/task/description`, task)
 			return response.data as Task
 		} catch (error) {
 			console.error("Error updating task description:", error)
@@ -110,7 +110,7 @@ export class ProjectPlanningClient {
 
 	async fetchAllTasks(projectId: string): Promise<Task[]> {
 		try {
-			const response = await axios.get(`${this.endpoint}/task/fetch-all/${projectId}`)
+			const response = await axios.get(`${this.endpoint}/planning/task/fetch-all/${projectId}`)
 			return response.data as Task[]
 		} catch (error) {
 			console.error("Error fetching all tasks:", error)
@@ -124,7 +124,7 @@ export class ProjectPlanningClient {
 				projectId: projectId,
 				projectDescription: projectDescription,
 			}
-			const response = await axios.post(`${this.endpoint}/project/plan-tasks`, requestBody)
+			const response = await axios.post(`${this.endpoint}/planning/task/plan-tasks`, requestBody)
 			return response.data as Task[]
 		} catch (error) {
 			console.error("Error planning tasks with AI:", error)
@@ -141,7 +141,7 @@ export class ProjectPlanningClient {
 				message: message,
 				type: type,
 			}
-			const response = await axios.post(`${this.endpoint}/task/record-work`, requestBody)
+			const response = await axios.post(`${this.endpoint}/planning/task/record-work`, requestBody)
 			return response.data as Task
 		} catch (error) {
 			console.error("Error recording work:", error)
@@ -156,7 +156,7 @@ export class ProjectPlanningClient {
 				commentText: commentText,
 				authorId: authorId,
 			}
-			const response = await axios.post(`${this.endpoint}/task/leave-comment`, requestBody)
+			const response = await axios.post(`${this.endpoint}/planning/task/leave-comment`, requestBody)
 			return response.data as Task
 		} catch (error) {
 			console.error("Error leaving comment:", error)
