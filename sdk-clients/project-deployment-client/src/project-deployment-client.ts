@@ -37,7 +37,7 @@ export class ProjectDeploymentClient {
 				projectId: projectId,
 			}
 
-			await axios.post(`${this.endpoint}/project-cloud-profile`, payload)
+			await axios.post(`${this.endpoint}/deployment/project-cloud-profile`, payload)
 		} catch (error) {
 			console.error("Error creating cloud profile:", error)
 			throw error
@@ -46,7 +46,7 @@ export class ProjectDeploymentClient {
 
 	async deployModule(deployModuleCommand: DeployModuleCommand): Promise<EntryPoint> {
 		try {
-			const response = await axios.post(`${this.endpoint}/deploy-module`, deployModuleCommand)
+			const response = await axios.post(`${this.endpoint}/deployment/module`, deployModuleCommand)
 
 			return response.data as EntryPoint
 		} catch (error) {
@@ -60,7 +60,7 @@ export class ProjectDeploymentClient {
 			const environmentKey = EnvironmentType[environment] as string
 
 			const response = await axios.get(
-				`${this.endpoint}/projects/${projectId}/environments/${environmentKey}/entry-point`,
+				`${this.endpoint}/deployment/projects/${projectId}/environments/${environmentKey}/entry-point`,
 			)
 
 			return response.data as EntryPoint
