@@ -18,13 +18,13 @@ export class AICodingClient {
 		this.endpoint = endpoint
 	}
 
-	async initializeReactModule(projectId: string): Promise<Module> {
+	async initalizeModule(projectId: string): Promise<Module> {
 		try {
 			const requestBody = {
 				projectId: projectId,
 			}
 
-			const response = await axios.post(`${this.endpoint}/initialize-react-module`, requestBody)
+			const response = await axios.post(`${this.endpoint}/ai/module/initalization`, requestBody)
 
 			return response.data
 		} catch (error) {
@@ -33,9 +33,9 @@ export class AICodingClient {
 		}
 	}
 
-	async develop(task: Task, accountId: string): Promise<void> {
+	async developModule(task: Task, accountId: string): Promise<void> {
 		try {
-			const response = await axios.post(`${this.endpoint}/develop`, { task: task, accountId: accountId })
+			const response = await axios.post(`${this.endpoint}/ai/module/development`, { task: task, accountId: accountId })
 
 			return response.data
 		} catch (error) {
@@ -44,13 +44,13 @@ export class AICodingClient {
 		}
 	}
 
-	async deployToProduction(projectId: string): Promise<{ moduleId: string, publicAppUrl: string }> {
+	async deployModule(projectId: string): Promise<{ moduleId: string, publicAppUrl: string }> {
 		try {
 			const requestBody = {
 				projectId: projectId,
 			}
 
-			const response = await axios.post(`${this.endpoint}/deploy-to-production`, requestBody)
+			const response = await axios.post(`${this.endpoint}/ai/module/deployment`, requestBody)
 
 			return response.data
 		} catch (error) {
