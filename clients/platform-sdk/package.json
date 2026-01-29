@@ -1,6 +1,6 @@
 {
 	"name": "@jigjoy-io/platform-sdk",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "The SDK for vibe coding platform",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -36,7 +36,7 @@
 		"@jigjoy-io/observability-client": "^0.0.6",
 		"@jigjoy-io/project-deployment-client": "^0.0.9",
 		"@jigjoy-io/project-planning-client": "^0.0.6",
-		"@jigjoy-io/project-versioning-client": "^0.0.8",
+		"@jigjoy-io/project-versioning-client": "^0.0.9",
 		"axios": "^1.13.2"
 	}
 }

@@ -19,7 +19,7 @@ export class ProjectVersioningClient {
 
 	async initializeProjectHistory(): Promise<string> {
 		try {
-			const res = await axios.post(`${this.endpoint}/initialize-project-history`, {})
+			const res = await axios.post(`${this.endpoint}/project-history`, {})
 			return res.data
 		} catch (error) {
 			console.error("Error initializing project history:", error)
@@ -31,7 +31,7 @@ export class ProjectVersioningClient {
 		try {
 			const payload = JSON.parse(JSON.stringify(version))
 
-			await axios.post(`${this.endpoint}/save-version`, payload)
+			await axios.post(`${this.endpoint}/${version.projectHistoryId}/versions`, payload)
 		} catch (error) {
 			console.error("Error saving version:", error)
 			throw error
@@ -40,7 +40,7 @@ export class ProjectVersioningClient {
 
 	async getLatestVersion(projectHistoryId: string): Promise<VersionDTO> {
 		try {
-			const res = await axios.get<VersionDTO>(`${this.endpoint}/get-latest-version/${projectHistoryId}`)
+			const res = await axios.get<VersionDTO>(`${this.endpoint}/project-history/${projectHistoryId}/versions/latest`)
 
 			return res.data
 		} catch (error: any) {
