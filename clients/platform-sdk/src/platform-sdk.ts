@@ -3,6 +3,7 @@ import { ProjectPlanningClient } from "@jigjoy-io/project-planning-client"
 import { ProjectDeploymentClient } from "@jigjoy-io/project-deployment-client"
 import { ObservabilityClient } from "@jigjoy-io/observability-client"
 import { AICodingClient } from "@jigjoy-io/ai-coding-client"
+import { ProjectVersioningClient } from "@jigjoy-io/project-versioning-client"
 
 export class PlatformSDK {
 
@@ -11,6 +12,7 @@ export class PlatformSDK {
   	observability: ObservabilityClient
   	deployment: ProjectDeploymentClient
   	ai: AICodingClient
+	versioning: ProjectVersioningClient
 
 	constructor(endpoint: string) {
 		this.planning = new ProjectPlanningClient(endpoint)
@@ -18,6 +20,7 @@ export class PlatformSDK {
 		this.observability = new ObservabilityClient(endpoint)
 		this.deployment = new ProjectDeploymentClient(endpoint)
 		this.ai = new AICodingClient(endpoint)
+		this.versioning = new ProjectVersioningClient(endpoint)
 	}
 
 
