@@ -3,6 +3,7 @@ import { ProjectNotFoundError, ProjectPlanningClient } from "@jigjoy-io/project-
 import { ProjectDeploymentClient, type DeployModuleCommand, type EntryPoint, EnvironmentType } from "@jigjoy-io/project-deployment-client"
 import { DefaultPagination, type Heatmap, ObservabilityClient, type Pagination, type TaskExecution, TaskExecutionStatus, type TimeRange } from "@jigjoy-io/observability-client"
 import { AICodingClient, type Module, ModuleType } from "@jigjoy-io/ai-coding-client"
+import { ProjectVersioningClient } from "@jigjoy-io/project-versioning-client"
 
 export { 
 	// Observability
@@ -26,5 +27,7 @@ export {
 	ProjectNotFoundError,
 	ProjectPlanningClient,
 	// Account and Billing
-	AccountAndBillingClient
+	AccountAndBillingClient,
+	// Project Versioning
+	ProjectVersioningClient
 }

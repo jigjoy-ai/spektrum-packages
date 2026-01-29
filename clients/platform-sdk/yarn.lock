@@ -170,6 +170,13 @@
     "@jigjoy-io/task-contracts" "^0.0.2"
     axios "^1.13.2"
 
+"@jigjoy-io/project-versioning-client@^0.0.8":
+  version "0.0.8"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-io/project-versioning-client/0.0.8/1a47d89d3a9fe3e1083445defdea98f882cb370a#1a47d89d3a9fe3e1083445defdea98f882cb370a"
+  integrity sha512-ppc4Cs1Ic6GtOe+1gnHHsi//y/FOYE7j04kI5s1wd1CijP0cLV1hdAS3qXw0FNjjPofPVNqvr/MxjafWTu1+0A==
+  dependencies:
+    axios "^1.13.2"
+
 "@jigjoy-io/task-contracts@^0.0.2":
   version "0.0.2"
   resolved "https://npm.pkg.github.com/download/@jigjoy-io/task-contracts/0.0.2/5719d41913ba8bdf4a707518aaca7dba632cb13d#5719d41913ba8bdf4a707518aaca7dba632cb13d"
