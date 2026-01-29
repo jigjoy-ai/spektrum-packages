@@ -4,7 +4,7 @@ import { ProjectDeploymentClient } from "@jigjoy-io/project-deployment-client"
 import { ObservabilityClient } from "@jigjoy-io/observability-client"
 import { AICodingClient } from "@jigjoy-io/ai-coding-client"
 
-export class PlatfromSDK {
+export class PlatformSDK {
 
 	planning: ProjectPlanningClient
   	account: AccountAndBillingClient
