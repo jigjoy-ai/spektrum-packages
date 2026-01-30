@@ -24,7 +24,7 @@ export class AICodingClient {
 				projectId: projectId,
 			}
 
-			const response = await axios.post(`${this.endpoint}/ai/module/initalization`, requestBody)
+			const response = await axios.post(`${this.endpoint}/ai/module/initialization`, requestBody)
 
 			return response.data
 		} catch (error) {
