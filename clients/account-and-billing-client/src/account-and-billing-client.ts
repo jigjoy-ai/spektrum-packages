@@ -39,6 +39,14 @@ export class AccountAndBillingClient {
 
 	}
 
+	async createApiKey(accountId: string, name: string) {
+		const res: any = await this.api.post(`/account/api-key`, {
+			accountId: accountId,
+			name: name
+		})
+		return res.data
+	}
+
 	logout() {
 		this.clearAccessToken()
 	}
