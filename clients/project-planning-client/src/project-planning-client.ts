@@ -1,4 +1,4 @@
-import { ActivityType, Task } from "@jigjoy-io/task-contracts"
+import { ActivityType, Task } from "@jigjoy-ai/task-contracts"
 import { ProjectNotFoundError } from "./types"
 import axios from "axios"
 

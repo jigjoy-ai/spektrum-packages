@@ -1,6 +1,6 @@
 {
-	"name": "@jigjoy-io/observability-client",
-	"version": "0.0.6",
+	"name": "@jigjoy-ai/observability-client",
+	"version": "0.0.7",
 	"description": "The SDK for observability",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -10,7 +10,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jigjoy-io/packages.git"
+		"url": "https://github.com/jigjoy-ai/packages.git"
 	},
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/"

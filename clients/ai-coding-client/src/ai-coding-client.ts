@@ -1,4 +1,4 @@
-import { Task } from "@jigjoy-io/task-contracts"
+import { Task } from "@jigjoy-ai/task-contracts"
 import axios from "axios"
 
 export enum ModuleType {

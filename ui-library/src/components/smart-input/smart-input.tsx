@@ -22,7 +22,7 @@ const SmartInput: FC<SmartInputProps> = ({
 	className = "",
 	placeholderClassName = "",
 }: SmartInputProps) => {
-	const inputRef = useRef<HTMLDivElement>(null)
+	const inputRef = useRef<HTMLParagraphElement>(null)
 	const [isEmpty, setIsEmpty] = useState(true)
 
 	// Validate that only SmartFooter is allowed as a child
@@ -37,13 +37,13 @@ const SmartInput: FC<SmartInputProps> = ({
 		setIsEmpty(value.trim() === "")
 	}, [value])
 
-	const handleInput = (e: React.ChangeEvent<HTMLDivElement>) => {
-		const text = e.target.innerText ?? ""
+	const handleInput = (e: React.InputEvent<HTMLParagraphElement>) => {
+		const text = e.currentTarget.innerText ?? ""
 		setIsEmpty(text.trim() === "")
 		onChange(text)
 	}
 
-	const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleMouseDown = (e: React.MouseEvent<HTMLParagraphElement>) => {
 		if (!inputRef.current) return
 		if (isEmpty) {
 			e.preventDefault()
@@ -83,7 +83,7 @@ const SmartInput: FC<SmartInputProps> = ({
 					suppressContentEditableWarning
 					onMouseDown={handleMouseDown}
 					onInput={handleInput}
-					onBlur={(e: React.FocusEvent<HTMLDivElement>) => onBlur?.(e.target.innerText)}
+					onBlur={(e: React.FocusEvent<HTMLParagraphElement>) => onBlur?.(e.currentTarget.innerText)}
 					ref={inputRef}
 				/>
 				{children && children}

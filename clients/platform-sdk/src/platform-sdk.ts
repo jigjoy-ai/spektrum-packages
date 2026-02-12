@@ -1,9 +1,9 @@
-import { AccountAndBillingClient } from "@jigjoy-io/account-and-billing-client"
-import { ProjectPlanningClient } from "@jigjoy-io/project-planning-client"
-import { ProjectDeploymentClient } from "@jigjoy-io/project-deployment-client"
-import { ObservabilityClient } from "@jigjoy-io/observability-client"
-import { AICodingClient } from "@jigjoy-io/ai-coding-client"
-import { ProjectVersioningClient } from "@jigjoy-io/project-versioning-client"
+import { AccountAndBillingClient } from "@jigjoy-ai/account-and-billing-client"
+import { ProjectPlanningClient } from "@jigjoy-ai/project-planning-client"
+import { ProjectDeploymentClient } from "@jigjoy-ai/project-deployment-client"
+import { ObservabilityClient } from "@jigjoy-ai/observability-client"
+import { AICodingClient } from "@jigjoy-ai/ai-coding-client"
+import { ProjectVersioningClient } from "@jigjoy-ai/project-versioning-client"
 
 export class PlatformSDK {
 

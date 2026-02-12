@@ -1,6 +1,6 @@
 {
-	"name": "@jigjoy-io/task-contracts",
-	"version": "0.0.2",
+	"name": "@jigjoy-ai/task-contracts",
+	"version": "0.0.3",
 	"description": "Shared contracts for JigJoy services",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -10,7 +10,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jigjoy-io/packages.git"
+		"url": "https://github.com/jigjoy-ai/packages.git"
 	},
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/"
