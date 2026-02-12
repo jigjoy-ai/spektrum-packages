@@ -1,6 +1,6 @@
 {
-	"name": "@jigjoy-io/account-and-billing-client",
-	"version": "0.0.3",
+	"name": "@jigjoy-ai/account-and-billing-client",
+	"version": "0.0.4",
 	"description": "The SDK for account and billing",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
