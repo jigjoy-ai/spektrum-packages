@@ -7,10 +7,10 @@
   resolved "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.27.2.tgz"
   integrity sha512-uwp2Tip5aPmH+NRUwTcfLb+W32WXjpFejTIOWZFw/v7/KnpCDKG66u4DLcurQpiYTiYwQ9B7KOeMJvLCu/OvbA==
 
-"@jigjoy-ai/account-and-billing-client@^0.0.5":
-  version "0.0.5"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/account-and-billing-client/0.0.5/fd20cb0441672a511f2a1cd5a5e3f3cb3d1d5e60"
-  integrity sha512-taZINziKIku91lBZe8utb4B9kLYDw+sfF3WTTmi0RmEQzHNXVv6Hc1ClU4ayfy1bUFgwRaKGGT9IoAPTOpGQAg==
+"@jigjoy-ai/account-and-billing-client@^0.3.0":
+  version "0.3.0"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/account-and-billing-client/0.3.0/234841fda81c5e0988ebacd784208b5b5a745365"
+  integrity sha512-+crvpH4BOTvb6nMgB0vzSeDDl4w27+urp/TWTz+NTX+9E/p/JLsCS4jZUyH3pFxw7W6fo0L3rTA3RSN1ySDXSg==
   dependencies:
     axios "^1.13.2"
 

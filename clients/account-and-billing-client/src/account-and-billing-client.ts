@@ -12,11 +12,11 @@ export class AccountAndBillingClient {
 	setAccessToken = (token: string) => {
 		sessionStorage.setItem("accessToken", token)
 	}
-	
+
 	getAccessToken = () => {
 		return sessionStorage.getItem("accessToken")
 	}
-	
+
 	clearAccessToken = () => {
 		sessionStorage.removeItem("accessToken")
 	}
@@ -27,23 +27,26 @@ export class AccountAndBillingClient {
 	}
 
 	async verifyMagicLinkChallenge(email: string, challengeResponse: string) {
-
 		const options = {
 			email: email,
-			challenge: challengeResponse
+			challenge: challengeResponse,
 		}
 
 		const res: any = await this.api.post(`/account/challenge/magic-link/verify`, options)
 		this.setAccessToken(res.data.accessToken)
 		return res.data
-
 	}
 
 	async createApiKey(accountId: string, name: string) {
 		const res: any = await this.api.post(`/account/api-key`, {
 			accountId: accountId,
-			name: name
+			name: name,
 		})
+		return res.data
+	}
+
+	async chargeAccount(accountId: string, amount: number) {
+		const res: any = await this.api.post(`/account/charge`, { accountId: accountId, amount: amount })
 		return res.data
 	}
 
@@ -51,7 +54,7 @@ export class AccountAndBillingClient {
 		this.clearAccessToken()
 	}
 
-	hasAccessToken(){
+	hasAccessToken() {
 		const accessToken = this.getAccessToken()
 		return accessToken !== null
 	}
