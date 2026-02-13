@@ -45,9 +45,12 @@ export class AccountAndBillingClient {
 		return res.data
 	}
 
-	async chargeAccount(accountId: string, amount: number) {
-		const res: any = await this.api.post(`/account/charge`, { accountId: accountId, amount: amount })
-		return res.data
+	async chargeAccount(accountId: string, providerCostUsd: number) {
+		const res: any = await this.api.post(`/account/charge`, {
+			accountId: accountId,
+			providerCostUsd: providerCostUsd,
+		})
+		return res.data as { totalCostUsd: number }
 	}
 
 	logout() {
