@@ -7,49 +7,56 @@
   resolved "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.27.2.tgz"
   integrity sha512-uwp2Tip5aPmH+NRUwTcfLb+W32WXjpFejTIOWZFw/v7/KnpCDKG66u4DLcurQpiYTiYwQ9B7KOeMJvLCu/OvbA==
 
-"@jigjoy-ai/account-and-billing-client@^0.3.1":
-  version "0.3.1"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/account-and-billing-client/0.3.1/96df0e833d3e67c92c1aec2ebc60c9752ff60651"
-  integrity sha512-pjgPnyn3BF9RBO5vAWJlZT10P4UNaWcntVmG4QclVqy0msnsGB6JRI9opdmlYrl2F9OQKzvarlSiPHH7/jefrg==
+"@jigjoy-ai/account-and-billing-client@^0.5.1":
+  version "0.5.1"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/account-and-billing-client/0.5.1/749d3dc604d6d7fc0dca669dda5b29ca7c8994c3"
+  integrity sha512-Zfe89Glw8I0NYB76BOKMIncjmogjDpmUGnkJiZiWJltYSafDw3GLmwrepDJAJdfsPzUiwtOEW+/cTvJEFKXcsg==
   dependencies:
-    axios "^1.13.2"
+    "@jigjoy-ai/http-client" "^0.1.1"
 
-"@jigjoy-ai/ai-coding-client@^0.0.12":
-  version "0.0.12"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/ai-coding-client/0.0.12/1881ba6ed015097a867f2dc92a262766473c2f66"
-  integrity sha512-ONDLbNzhI7WxDrl7EXcda/4seuXAMnW4imkoqLhEHcJkvxbpadyrr0vbyeTrx8ilOgZEP4QkOLa3gYote1ON/A==
+"@jigjoy-ai/ai-coding-client@^0.1.1":
+  version "0.1.1"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/ai-coding-client/0.1.1/fc839ccf288c770a6892e2e127a179484dc17d37"
+  integrity sha512-gF7k6b04q7krUpn/EaK+ZBXFW1irt+Y2abahr2SWKjd6J/xglszKdl8JWtyeJed2CyTiq2nSAhfTpK/5tWU50Q==
   dependencies:
+    "@jigjoy-ai/http-client" "^0.1.1"
     "@jigjoy-ai/task-contracts" "^0.0.3"
-    axios "^1.13.2"
 
-"@jigjoy-ai/observability-client@^0.0.7":
-  version "0.0.7"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/observability-client/0.0.7/a0967d4c3d0949ce396c3295cdeda5223419cbc7"
-  integrity sha512-Ry2X3x4M+MUL4KUNeMGNbdDSAg1kB0mE/IueV4JMiHAMsl+z6SwmIFCGy4nVNd74SPxS4BgIEm8keapUJlJ/yg==
+"@jigjoy-ai/http-client@^0.1.1":
+  version "0.1.1"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/http-client/0.1.1/a577089088c35e84b73fa304c5ec0ec7481ea093"
+  integrity sha512-TJUe3ZhVmvDu5kDb7117i7z9Ki+aoGb4j4a7R0szn2A93arBMhsM+XZS7p21HmByQjjCezBrp5xnLt18HZpIgA==
   dependencies:
-    axios "^1.13.2"
+    axios "^1.13.5"
 
-"@jigjoy-ai/project-deployment-client@^0.0.10":
-  version "0.0.10"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/project-deployment-client/0.0.10/3275637843cabeaeb2a634a2bd501cc2a5d1f69b"
-  integrity sha512-EE22j0gx2MiEFwn7kwHa0YC4jQX7pDIBpBQKAEV+BQPzQdjFuTtjCq75hSieQbCEB6x8appbMPI365RMIqa8fg==
+"@jigjoy-ai/observability-client@^0.1.1":
+  version "0.1.1"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/observability-client/0.1.1/43d3f1c82c05edb4dcd8ce6195b109eb864d7853"
+  integrity sha512-qzH6ZXnPChGwFOr28OJGDD9EtCrx+vRNhF6JnviHTVCIcAsbZo8wGKDMoDz82WEv5XP2sqEfyljl1OGfvzHJ2Q==
   dependencies:
-    axios "^1.13.2"
+    "@jigjoy-ai/http-client" "^0.1.1"
 
-"@jigjoy-ai/project-planning-client@^0.0.7":
-  version "0.0.7"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/project-planning-client/0.0.7/350474571afc3ccf4f62869e9cc98481107078a3"
-  integrity sha512-uJ3z3LgbHtT0SxYvPsP3boVg3FHuRpA3Tr5mkzWmtVc3fiTQSrZbfnZOgiIJ7IP6UhPU7CRbQq6zF51KZ5Vwdg==
+"@jigjoy-ai/project-deployment-client@^0.1.0":
+  version "0.1.0"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/project-deployment-client/0.1.0/f1be915aae723dc567ac496e68534f1e71a147b6"
+  integrity sha512-hTBKEgZLP28/G8trwclomw884Trw0IGuhKBw5QsnLNH2YblNSjqKMvwTDs/T37fCK/qr3ebrVXlDwCpTWsChyw==
   dependencies:
+    "@jigjoy-ai/http-client" "^0.1.1"
+
+"@jigjoy-ai/project-planning-client@^0.1.0":
+  version "0.1.0"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/project-planning-client/0.1.0/94de68f140b8352d21908f2b9aafa0ff7d72082e"
+  integrity sha512-w87lVoSQayeFDvqzLDKMZcrw4CHm5fZnk0uHcdsViiFMb26r4fm+OzmFEqfXN2elnPWocISJ7Fu8Rwv/9U49Xw==
+  dependencies:
+    "@jigjoy-ai/http-client" "^0.1.1"
     "@jigjoy-ai/task-contracts" "^0.0.3"
-    axios "^1.13.2"
 
-"@jigjoy-ai/project-versioning-client@^0.0.11":
-  version "0.0.11"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/project-versioning-client/0.0.11/8cd7d85f24568b2d3f411745933ddfaa2530fb77"
-  integrity sha512-3Lm3UVFfeSrdtmvKqIQJAWPTLrxnJIkfHZ5xOP1/KtBJjXeL9nrmB5u2ySh7Gef2XDQRMZq235ryrKeJ6KadHA==
+"@jigjoy-ai/project-versioning-client@^0.1.0":
+  version "0.1.0"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/project-versioning-client/0.1.0/bf3394d39463ddb59f021842983d6f9d5c5f0da3"
+  integrity sha512-RId5KPOd0FCngvh06zyaUWXZqNm0nyo1AW6qE0yd4uPieV9unDCtiYJIw/S8DhV2jJGLGtR71wURXwJZHZk91w==
   dependencies:
-    axios "^1.13.2"
+    "@jigjoy-ai/http-client" "^0.1.1"
 
 "@jigjoy-ai/task-contracts@^0.0.3":
   version "0.0.3"
@@ -119,13 +126,13 @@ asynckit@^0.4.0:
   resolved "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@^1.13.2:
-  version "1.13.4"
-  resolved "https://registry.npmjs.org/axios/-/axios-1.13.4.tgz"
-  integrity sha512-1wVkUaAO6WyaYtCkcYCOx12ZgpGf9Zif+qXa4n+oYzK558YryKqiL6UWwd5DqiH3VRW0GYhTZQ/vlgJrCoNQlg==
+axios@^1.13.5:
+  version "1.13.5"
+  resolved "https://registry.npmjs.org/axios/-/axios-1.13.5.tgz"
+  integrity sha512-cz4ur7Vb0xS4/KUN0tPWe44eqxrIu31me+fbang3ijiNscE129POzipJJA6zniq2C/Z6sJCjMimjS8Lc/GAs8Q==
   dependencies:
-    follow-redirects "^1.15.6"
-    form-data "^4.0.4"
+    follow-redirects "^1.15.11"
+    form-data "^4.0.5"
     proxy-from-env "^1.1.0"
 
 bundle-require@^5.1.0:
@@ -271,12 +278,12 @@ fix-dts-default-cjs-exports@^1.0.0:
     mlly "^1.7.4"
     rollup "^4.34.8"
 
-follow-redirects@^1.15.6:
+follow-redirects@^1.15.11:
   version "1.15.11"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.11.tgz"
   integrity sha512-deG2P0JfjrTxl50XGCDyfI97ZGVCxIpfKYmfyrQ54n5FO/0gfIES8C/Psl6kWVDolizcaaxZJnTS0QSMxvnsBQ==
 
-form-data@^4.0.4:
+form-data@^4.0.5:
   version "4.0.5"
   resolved "https://registry.npmjs.org/form-data/-/form-data-4.0.5.tgz"
   integrity sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==

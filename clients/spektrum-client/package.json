@@ -1,0 +1,42 @@
+{
+	"name": "@jigjoy-ai/spektrum-client",
+	"version": "0.0.1",
+	"description": "The client for Spektrum platform",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jigjoy-io/packages.git"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"author": "Miodrag Vilotijević",
+	"scripts": {
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"prepublishOnly": "npm run build",
+		"format": "prettier --write \"src/**/*.{ts,tsx}\""
+	},
+	"keywords": [],
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^24.3.0",
+		"prettier": "^3.7.4",
+		"tsup": "^8.0.2",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"@jigjoy-ai/account-and-billing-client": "^0.5.1",
+		"@jigjoy-ai/ai-coding-client": "^0.1.1",
+		"@jigjoy-ai/http-client": "^0.1.1",
+		"@jigjoy-ai/observability-client": "^0.1.1",
+		"@jigjoy-ai/project-deployment-client": "^0.1.0",
+		"@jigjoy-ai/project-planning-client": "^0.1.0",
+		"@jigjoy-ai/project-versioning-client": "^0.1.0"
+	}
+}
