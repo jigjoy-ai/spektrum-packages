@@ -1,25 +1,9 @@
-import axios, { AxiosInstance } from "axios"
+import { authStoreBrowser } from "@jigjoy-ai/http-client"
+import type { AxiosInstance } from "@jigjoy-ai/http-client"
 
 export class AccountAndBillingClient {
-	private readonly endpoint: string
-	private readonly api: AxiosInstance
 
-	constructor(endpoint: string) {
-		this.endpoint = endpoint
-		this.api = axios.create({ baseURL: this.endpoint })
-	}
-
-	setAccessToken = (token: string) => {
-		sessionStorage.setItem("accessToken", token)
-	}
-
-	getAccessToken = () => {
-		return sessionStorage.getItem("accessToken")
-	}
-
-	clearAccessToken = () => {
-		sessionStorage.removeItem("accessToken")
-	}
+	constructor(private readonly api: AxiosInstance) {}
 
 	async sendMagicLinkChallenge(email: string) {
 		const res: any = await this.api.post(`/account/challenge/magic-link`, { email: email })
@@ -31,9 +15,9 @@ export class AccountAndBillingClient {
 			email: email,
 			challenge: challengeResponse,
 		}
-
+		
 		const res: any = await this.api.post(`/account/challenge/magic-link/verify`, options)
-		this.setAccessToken(res.data.accessToken)
+		authStoreBrowser.setAccessToken(res.data.accessToken) 
 		return res.data
 	}
 
@@ -54,11 +38,10 @@ export class AccountAndBillingClient {
 	}
 
 	logout() {
-		this.clearAccessToken()
+		authStoreBrowser.clear()
 	}
 
-	hasAccessToken() {
-		const accessToken = this.getAccessToken()
-		return accessToken !== null
+	hasAccessToken(): boolean {
+		return authStoreBrowser.hasAccessToken()
 	}
 }

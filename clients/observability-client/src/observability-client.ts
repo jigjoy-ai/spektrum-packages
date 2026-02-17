@@ -1,12 +1,9 @@
-import axios from "axios"
 import { Heatmap, Pagination, TaskExecution, TimeRange } from "./types"
+import type { AxiosInstance } from "@jigjoy-ai/http-client"
 
 export class ObservabilityClient {
-	private readonly endpoint: string
 
-	constructor(endpoint: string) {
-		this.endpoint = endpoint
-	}
+	constructor(private readonly api: AxiosInstance) {}
 
 	async taskExecutionStarted(title: string, projectId: string, taskId: string, accountId: string): Promise<TaskExecution> {
 		try {
@@ -17,7 +14,7 @@ export class ObservabilityClient {
 				taskId: taskId,
 				accountId: accountId,
 			}
-			const response = await axios.post(`${this.endpoint}/observability/task-execution/started`, taskExecution)
+			const response = await this.api.post(`/observability/task-execution/started`, taskExecution)
 			return response.data as TaskExecution
 		} catch (error) {
 			console.error("Error starting task execution:", error)
@@ -27,7 +24,7 @@ export class ObservabilityClient {
 
 	async taskExecutionSucceeded(taskExecutionId: string): Promise<void> {
 		try {
-			await axios.post(`${this.endpoint}/observability/task-execution/finished`, { taskExecutionId: taskExecutionId })
+			await this.api.post(`/observability/task-execution/finished`, { taskExecutionId: taskExecutionId })
 		} catch (error) {
 			console.error("Error succeeded task execution:", error)
 			throw error
@@ -36,7 +33,7 @@ export class ObservabilityClient {
 
 	async taskExecutionFailed(taskExecutionId: string, error: string): Promise<void> {
 		try {
-			await axios.post(`${this.endpoint}/observability/task-execution/finished-with-error`, { taskExecutionId: taskExecutionId, error: error })
+			await this.api.post(`/observability/task-execution/finished-with-error`, { taskExecutionId: taskExecutionId, error: error })
 		} catch (error) {
 			console.error("Error failed task execution:", error)
 			throw error
@@ -45,10 +42,12 @@ export class ObservabilityClient {
 
 	async getAccountExecutions(accountId: string, pagination: Pagination): Promise<TaskExecution[]> {
 		try {
-			const url = new URL(`${this.endpoint}/observability/task-execution/account/${accountId}`)
-			url.searchParams.append("page", String(pagination.pageNumber))
-			url.searchParams.append("size", String(pagination.pageSize))
-			const response = await axios.get(url.toString())
+
+			const params = {
+				page: pagination.pageNumber,
+				size: pagination.pageSize,
+			}
+			const response = await this.api.get(`/observability/task-execution/account/${accountId}`, { params: params })
 
 			return response.data as TaskExecution[]
 		} catch (error) {
@@ -59,10 +58,11 @@ export class ObservabilityClient {
 
 	async getProjectExecutions(projectId: string, pagination: Pagination): Promise<TaskExecution[]> {
 		try {
-			const url = new URL(`${this.endpoint}/observability/task-execution/project/${projectId}`)
-			url.searchParams.append("page", String(pagination.pageNumber))
-			url.searchParams.append("size", String(pagination.pageSize))
-			const response = await axios.get(url.toString())
+			const params = {
+				page: pagination.pageNumber,
+				size: pagination.pageSize,
+			}
+			const response = await this.api.get(`/observability/task-execution/project/${projectId}`, { params: params })
 
 			return response.data as TaskExecution[]
 		} catch (error) {
@@ -74,10 +74,11 @@ export class ObservabilityClient {
 	async getHeatmap(accountId: string, timeRange: TimeRange): Promise<Heatmap[]> {
 		try {
 
-			const url = new URL(`${this.endpoint}/observability/task-execution/heatmap/account/${accountId}`)
-			url.searchParams.append("startDate", timeRange.startDate)
-			url.searchParams.append("endDate", timeRange.endDate)
-			const response = await axios.get(url.toString())
+			const params = {
+				startDate: timeRange.startDate,
+				endDate: timeRange.endDate,
+			}
+			const response = await this.api.get(`/observability/task-execution/heatmap/account/${accountId}`, { params: params })
 			return response.data as Heatmap[]
 		} catch (error) {
 			console.error("Error getting heatmap:", error)

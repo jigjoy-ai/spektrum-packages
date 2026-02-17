@@ -1,5 +1,5 @@
 import { Task } from "@jigjoy-ai/task-contracts"
-import axios from "axios"
+import type { AxiosInstance } from "@jigjoy-ai/http-client"
 
 export enum ModuleType {
 	FRONTEND = "FRONTEND",
@@ -12,11 +12,8 @@ export type Module = {
 }
 
 export class AICodingClient {
-	private readonly endpoint: string
 
-	constructor(endpoint: string) {
-		this.endpoint = endpoint
-	}
+	constructor(private readonly api: AxiosInstance) {}
 
 	async initalizeModule(projectId: string): Promise<Module> {
 		try {
@@ -24,7 +21,7 @@ export class AICodingClient {
 				projectId: projectId,
 			}
 
-			const response = await axios.post(`${this.endpoint}/ai/module/initialization`, requestBody)
+			const response = await this.api.post(`/ai/module/initialization`, requestBody)
 
 			return response.data
 		} catch (error) {
@@ -35,7 +32,7 @@ export class AICodingClient {
 
 	async developModule(task: Task, accountId: string): Promise<void> {
 		try {
-			const response = await axios.post(`${this.endpoint}/ai/module/development`, { task: task, accountId: accountId })
+			const response = await this.api.post(`/ai/module/development`, { task: task, accountId: accountId })
 
 			return response.data
 		} catch (error) {
@@ -50,7 +47,7 @@ export class AICodingClient {
 				projectId: projectId,
 			}
 
-			const response = await axios.post(`${this.endpoint}/ai/module/deployment`, requestBody)
+			const response = await this.api.post(`/ai/module/deployment`, requestBody)
 
 			return response.data
 		} catch (error) {

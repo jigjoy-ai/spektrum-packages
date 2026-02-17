@@ -1,4 +1,4 @@
-import axios from "axios"
+import type { AxiosInstance } from "@jigjoy-ai/http-client"
 
 export enum EnvironmentType {
 	DEV = "DEV",
@@ -25,11 +25,8 @@ export type EntryPoint = {
 }
 
 export class ProjectDeploymentClient {
-	private readonly endpoint: string
 
-	constructor(endpoint: string) {
-		this.endpoint = endpoint
-	}
+	constructor(private readonly api: AxiosInstance) {}
 
 	async createCloudProfile(projectId: string): Promise<void> {
 		try {
@@ -37,7 +34,7 @@ export class ProjectDeploymentClient {
 				projectId: projectId,
 			}
 
-			await axios.post(`${this.endpoint}/deployment/project-cloud-profile`, payload)
+			await this.api.post(`/deployment/project-cloud-profile`, payload)
 		} catch (error) {
 			console.error("Error creating cloud profile:", error)
 			throw error
@@ -46,7 +43,7 @@ export class ProjectDeploymentClient {
 
 	async deployModule(deployModuleCommand: DeployModuleCommand): Promise<EntryPoint> {
 		try {
-			const response = await axios.post(`${this.endpoint}/deployment/module`, deployModuleCommand)
+			const response = await this.api.post(`/deployment/module`, deployModuleCommand)
 
 			return response.data as EntryPoint
 		} catch (error) {
@@ -59,8 +56,8 @@ export class ProjectDeploymentClient {
 		try {
 			const environmentKey = EnvironmentType[environment] as string
 
-			const response = await axios.get(
-				`${this.endpoint}/deployment/projects/${projectId}/environments/${environmentKey}/entry-point`,
+			const response = await this.api.get(
+				`/deployment/projects/${projectId}/environments/${environmentKey}/entry-point`,
 			)
 
 			return response.data as EntryPoint

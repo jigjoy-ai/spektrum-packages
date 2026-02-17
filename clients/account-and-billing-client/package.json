@@ -1,6 +1,6 @@
 {
 	"name": "@jigjoy-ai/account-and-billing-client",
-	"version": "0.3.1",
+	"version": "0.5.1",
 	"description": "The SDK for account and billing",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -31,6 +31,6 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
-		"axios": "^1.13.2"
+		"@jigjoy-ai/http-client": "^0.1.1"
 	}
 }

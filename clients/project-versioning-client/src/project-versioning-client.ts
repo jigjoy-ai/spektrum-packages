@@ -1,4 +1,4 @@
-import axios from "axios"
+import type { AxiosInstance } from "@jigjoy-ai/http-client"
 
 type FileArtifacts = {
 	[filePath: string]: string
@@ -11,15 +11,13 @@ type VersionDTO = {
 }
 
 export class ProjectVersioningClient {
-	private readonly endpoint: string
 
-	constructor(endpoint: string) {
-		this.endpoint = endpoint
+	constructor(private readonly api: AxiosInstance) {
 	}
 
 	async initializeProjectHistory(): Promise<string> {
 		try {
-			const res = await axios.post(`${this.endpoint}/versioning/project-history`, {})
+			const res = await this.api.post(`/versioning/project-history`, {})
 			return res.data
 		} catch (error) {
 			console.error("Error initializing project history:", error)
@@ -31,7 +29,7 @@ export class ProjectVersioningClient {
 		try {
 			const payload = JSON.parse(JSON.stringify(version))
 
-			await axios.post(`${this.endpoint}/versioning/project-history/${version.projectHistoryId}/versions`, payload)
+			await this.api.post(`/versioning/project-history/${version.projectHistoryId}/versions`, payload)
 		} catch (error) {
 			console.error("Error saving version:", error)
 			throw error
@@ -40,19 +38,11 @@ export class ProjectVersioningClient {
 
 	async getLatestVersion(projectHistoryId: string): Promise<VersionDTO> {
 		try {
-			const res = await axios.get<VersionDTO>(`${this.endpoint}/versioning/project-history/${projectHistoryId}/versions/latest`)
+			const res = await this.api.get<VersionDTO>(`/versioning/project-history/${projectHistoryId}/versions/latest`)
 
 			return res.data
 		} catch (error: any) {
 			console.error("Error fetching latest version:", error)
-
-			// Optional: preserve meaningful HTTP error info
-			if (axios.isAxiosError(error)) {
-				throw new Error(
-					`Failed to fetch latest version: ${error.response?.status} ${error.response?.statusText}`,
-				)
-			}
-
 			throw error
 		}
 	}
