@@ -1,6 +1,6 @@
 {
 	"name": "@jigjoy-ai/spektrum-client",
-	"version": "0.0.1",
+	"version": "0.0.4",
 	"description": "The client for Spektrum platform",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -31,8 +31,8 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
-		"@jigjoy-ai/account-and-billing-client": "^0.5.1",
-		"@jigjoy-ai/ai-coding-client": "^0.1.1",
+		"@jigjoy-ai/account-and-billing-client": "^0.5.2",
+		"@jigjoy-ai/ai-coding-client": "^0.1.3",
 		"@jigjoy-ai/http-client": "^0.1.1",
 		"@jigjoy-ai/observability-client": "^0.1.1",
 		"@jigjoy-ai/project-deployment-client": "^0.1.0",

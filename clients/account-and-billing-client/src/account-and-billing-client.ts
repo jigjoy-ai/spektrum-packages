@@ -17,7 +17,7 @@ export class AccountAndBillingClient {
 		}
 		
 		const res: any = await this.api.post(`/account/challenge/magic-link/verify`, options)
-		authStoreBrowser.setAccessToken(res.data.accessToken) 
+		authStoreBrowser.setAccessToken(res.data.authSession.accessToken) 
 		return res.data
 	}
 

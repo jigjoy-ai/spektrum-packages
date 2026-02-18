@@ -30,7 +30,7 @@ export class AICodingClient {
 		}
 	}
 
-	async developModule(task: Task, accountId: string): Promise<void> {
+	async developModule(task: Task, accountId: string): Promise<{ totalCostInUSD: number }> {
 		try {
 			const response = await this.api.post(`/ai/module/development`, { task: task, accountId: accountId })
 
