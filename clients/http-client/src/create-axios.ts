@@ -5,7 +5,7 @@ export function createAxios(baseURL: string, getCredentials: CredentialsProvider
     const api = axios.create({ baseURL })
 
     api.interceptors.request.use((config) => {
-        const c = getCredentials()
+        const credentials = getCredentials()
 
         config.headers = config.headers ?? {}
 
@@ -14,10 +14,10 @@ export function createAxios(baseURL: string, getCredentials: CredentialsProvider
         delete (config.headers as any)["x-api-key"]
         delete (config.headers as any)["x-internal-token"]
 
-        if (c.kind === "bearer") {
-            ;(config.headers as any).Authorization = `Bearer ${c.token}`
-        } else if (c.kind === "internal") {
-            ;(config.headers as any)["x-internal-token"] = c.token
+        if (credentials.kind === "bearer") {
+            ;(config.headers as any).Authorization = `Bearer ${credentials.token}`
+        } else if (credentials.kind === "internal") {
+            ;(config.headers as any)["x-internal-token"] = credentials.token
         }
 
         return config
