@@ -2,7 +2,6 @@ import { authStoreBrowser } from "@jigjoy-ai/http-client"
 import type { AxiosInstance } from "@jigjoy-ai/http-client"
 
 export class AccountAndBillingClient {
-
 	constructor(private readonly api: AxiosInstance) {}
 
 	async sendMagicLinkChallenge(email: string) {
@@ -15,23 +14,21 @@ export class AccountAndBillingClient {
 			email: email,
 			challenge: challengeResponse,
 		}
-		
+
 		const res: any = await this.api.post(`/account/challenge/magic-link/verify`, options)
-		authStoreBrowser.setAccessToken(res.data.authSession.accessToken) 
+		authStoreBrowser.setAccessToken(res.data.authSession.accessToken)
 		return res.data
 	}
 
-	async createApiKey(accountId: string, name: string) {
+	async createApiKey(name: string) {
 		const res: any = await this.api.post(`/account/api-key`, {
-			accountId: accountId,
 			name: name,
 		})
 		return res.data
 	}
 
-	async chargeAccount(accountId: string, providerCostUsd: number) {
+	async chargeAccount(providerCostUsd: number) {
 		const res: any = await this.api.post(`/account/charge`, {
-			accountId: accountId,
 			providerCostUsd: providerCostUsd,
 		})
 		return res.data as { totalCostUsd: number }

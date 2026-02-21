@@ -2,17 +2,14 @@ import { Heatmap, Pagination, TaskExecution, TimeRange } from "./types"
 import type { AxiosInstance } from "@jigjoy-ai/http-client"
 
 export class ObservabilityClient {
-
 	constructor(private readonly api: AxiosInstance) {}
 
-	async taskExecutionStarted(title: string, projectId: string, taskId: string, accountId: string): Promise<TaskExecution> {
+	async taskExecutionStarted(title: string, projectId: string, taskId: string): Promise<TaskExecution> {
 		try {
-
 			const taskExecution = {
 				title: title,
 				projectId: projectId,
 				taskId: taskId,
-				accountId: accountId,
 			}
 			const response = await this.api.post(`/observability/task-execution/started`, taskExecution)
 			return response.data as TaskExecution
@@ -33,21 +30,25 @@ export class ObservabilityClient {
 
 	async taskExecutionFailed(taskExecutionId: string, error: string): Promise<void> {
 		try {
-			await this.api.post(`/observability/task-execution/finished-with-error`, { taskExecutionId: taskExecutionId, error: error })
+			await this.api.post(`/observability/task-execution/finished-with-error`, {
+				taskExecutionId: taskExecutionId,
+				error: error,
+			})
 		} catch (error) {
 			console.error("Error failed task execution:", error)
 			throw error
 		}
 	}
 
-	async getAccountExecutions(accountId: string, pagination: Pagination): Promise<TaskExecution[]> {
+	async getAllExecutions(pagination: Pagination): Promise<TaskExecution[]> {
 		try {
-
 			const params = {
 				page: pagination.pageNumber,
 				size: pagination.pageSize,
 			}
-			const response = await this.api.get(`/observability/task-execution/account/${accountId}`, { params: params })
+			const response = await this.api.get(`/observability/task-executions`, {
+				params: params,
+			})
 
 			return response.data as TaskExecution[]
 		} catch (error) {
@@ -62,7 +63,9 @@ export class ObservabilityClient {
 				page: pagination.pageNumber,
 				size: pagination.pageSize,
 			}
-			const response = await this.api.get(`/observability/task-execution/project/${projectId}`, { params: params })
+			const response = await this.api.get(`/observability/task-execution/project/${projectId}`, {
+				params: params,
+			})
 
 			return response.data as TaskExecution[]
 		} catch (error) {
@@ -71,20 +74,19 @@ export class ObservabilityClient {
 		}
 	}
 
-	async getHeatmap(accountId: string, timeRange: TimeRange): Promise<Heatmap[]> {
+	async getHeatmap(timeRange: TimeRange): Promise<Heatmap[]> {
 		try {
-
 			const params = {
 				startDate: timeRange.startDate,
 				endDate: timeRange.endDate,
 			}
-			const response = await this.api.get(`/observability/task-execution/heatmap/account/${accountId}`, { params: params })
+			const response = await this.api.get(`/observability/task-execution/heatmap`, {
+				params: params,
+			})
 			return response.data as Heatmap[]
 		} catch (error) {
 			console.error("Error getting heatmap:", error)
 			throw error
 		}
 	}
-
-
 }
