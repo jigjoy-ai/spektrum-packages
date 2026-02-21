@@ -46,7 +46,7 @@ export class ObservabilityClient {
 				page: pagination.pageNumber,
 				size: pagination.pageSize,
 			}
-			const response = await this.api.get(`/observability/task-executions`, {
+			const response = await this.api.get(`/observability/task-execution/all`, {
 				params: params,
 			})
 
