@@ -14,10 +14,10 @@
   dependencies:
     "@jigjoy-ai/http-client" "^0.1.1"
 
-"@jigjoy-ai/ai-coding-client@^0.1.4":
-  version "0.1.4"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/ai-coding-client/0.1.4/6099e56dac4a2a02f9d506e1e92e22ae51bf0e45"
-  integrity sha512-u9xervnaeIrbljxiDknfJmn4ijj5+3NbnzZpzYnKqemx3P6kZWM9YnTQORMCryTJtzucei6uUQMQdjKjiU0J/g==
+"@jigjoy-ai/ai-coding-client@^0.1.5":
+  version "0.1.5"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/ai-coding-client/0.1.5/606dde46a901745d1493414cfbd595dcd6b40829"
+  integrity sha512-WB5V0cR65BZGoZq6sTNVT9Cb5br77eQEM2/LAFV+aumiwFCJBgbqQbREWwzrkrEs73x2wSYe8Z3cXRRvxAC6/Q==
   dependencies:
     "@jigjoy-ai/http-client" "^0.1.1"
     "@jigjoy-ai/task-contracts" "^0.0.3"

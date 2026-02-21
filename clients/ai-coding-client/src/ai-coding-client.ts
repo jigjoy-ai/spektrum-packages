@@ -12,7 +12,6 @@ export type Module = {
 }
 
 export class AICodingClient {
-
 	constructor(private readonly api: AxiosInstance) {}
 
 	async initalizeModule(projectId: string): Promise<Module> {
@@ -30,9 +29,9 @@ export class AICodingClient {
 		}
 	}
 
-	async developModule(task: Task, accountId: string): Promise<{ totalCostInUSD: number }> {
+	async developModule(task: Task): Promise<{ totalCostInUSD: number }> {
 		try {
-			const response = await this.api.post(`/ai/module/development`, { task: task, accountId: accountId })
+			const response = await this.api.post(`/ai/module/development`, { task: task })
 
 			return response.data
 		} catch (error) {
@@ -41,7 +40,7 @@ export class AICodingClient {
 		}
 	}
 
-	async deployModule(projectId: string): Promise<{ moduleId: string, publicAppUrl: string }> {
+	async deployModule(projectId: string): Promise<{ moduleId: string; publicAppUrl: string }> {
 		try {
 			const requestBody = {
 				projectId: projectId,
