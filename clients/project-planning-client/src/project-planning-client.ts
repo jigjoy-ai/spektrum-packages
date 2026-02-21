@@ -3,16 +3,11 @@ import { ProjectNotFoundError } from "./types"
 import type { AxiosInstance } from "@jigjoy-ai/http-client"
 
 export class ProjectPlanningClient {
+	constructor(private readonly api: AxiosInstance) {}
 
-	constructor(private readonly api: AxiosInstance) {
-	}
-
-	async createNewProject(owner: string): Promise<any> {
+	async createNewProject(): Promise<any> {
 		try {
-			const requestBody = {
-				owner: owner,
-			}
-			const response = await this.api.post(`/planning/project`, requestBody)
+			const response = await this.api.post(`/planning/project`)
 			return response.data
 		} catch (error) {
 			console.error("Error creating project:", error)
@@ -48,9 +43,9 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async fetchAllProjects(owner: string): Promise<any> {
+	async fetchAllProjects(): Promise<any> {
 		try {
-			const response = await this.api.get(`/planning/project/fetch-all/${owner}`)
+			const response = await this.api.get(`/planning/project/all`)
 			return response.data
 		} catch (error) {
 			console.error("Error fetching all projects:", error)
@@ -130,9 +125,13 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async recordWork(taskId: string, workerId: string, message: string, type: ActivityType.STARTED_WORK | ActivityType.FINISHED_WORK ): Promise<Task> {
+	async recordWork(
+		taskId: string,
+		workerId: string,
+		message: string,
+		type: ActivityType.STARTED_WORK | ActivityType.FINISHED_WORK,
+	): Promise<Task> {
 		try {
-
 			const requestBody = {
 				taskId: taskId,
 				workerId: workerId,
@@ -147,12 +146,11 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async leaveComment(taskId: string, commentText: string, authorId: string): Promise<Task> {
+	async leaveComment(taskId: string, commentText: string): Promise<Task> {
 		try {
 			const requestBody = {
 				taskId: taskId,
 				commentText: commentText,
-				authorId: authorId,
 			}
 			const response = await this.api.post(`/planning/task/leave-comment`, requestBody)
 			return response.data as Task

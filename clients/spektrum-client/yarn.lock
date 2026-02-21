@@ -43,10 +43,10 @@
   dependencies:
     "@jigjoy-ai/http-client" "^0.1.1"
 
-"@jigjoy-ai/project-planning-client@^0.1.0":
-  version "0.1.0"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/project-planning-client/0.1.0/94de68f140b8352d21908f2b9aafa0ff7d72082e"
-  integrity sha512-w87lVoSQayeFDvqzLDKMZcrw4CHm5fZnk0uHcdsViiFMb26r4fm+OzmFEqfXN2elnPWocISJ7Fu8Rwv/9U49Xw==
+"@jigjoy-ai/project-planning-client@^0.1.1":
+  version "0.1.1"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/project-planning-client/0.1.1/d7c1823e0c38809d30fed640b05b04b290db0074"
+  integrity sha512-ttDNiOrpd4BZbedWIs0U6IyJIgrRZzSBPv3wNlspr81miKLaFAQSE/OOBwQ8kRVRSkYFrCBj53fSkFAXOWvDFw==
   dependencies:
     "@jigjoy-ai/http-client" "^0.1.1"
     "@jigjoy-ai/task-contracts" "^0.0.3"
