@@ -1,13 +1,17 @@
 import { ActivityType, Task } from "@jigjoy-ai/task-contracts"
 import { ProjectNotFoundError } from "./types"
 import type { AxiosInstance } from "@jigjoy-ai/http-client"
+import { UserData } from "@jigjoy-ai/auth"
+import { authDataHeaders } from "@heksagon/http"
+import { Auth } from "@heksagon/app"
 
 export class ProjectPlanningClient {
 	constructor(private readonly api: AxiosInstance) {}
 
-	async createNewProject(): Promise<any> {
+	async createNewProject(auth?: Auth<UserData>): Promise<any> {
 		try {
-			const response = await this.api.post(`/planning/project`)
+			const response = await this.api.post(`/planning/project`, 
+				{ headers: auth ? authDataHeaders(auth) : {} })
 			return response.data
 		} catch (error) {
 			console.error("Error creating project:", error)
@@ -15,14 +19,14 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async updateProjectDetails(id: string, name: string, description: string): Promise<any> {
+	async updateProjectDetails(id: string, name: string, description: string, auth?: Auth<UserData>): Promise<any> {
 		try {
 			const requestBody = {
 				id: id,
 				name: name,
 				description: description,
 			}
-			const response = await this.api.put(`/planning/project`, requestBody)
+			const response = await this.api.put(`/planning/project`, requestBody, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data
 		} catch (error) {
 			console.error("Error updating project details:", error)
@@ -30,9 +34,9 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async fetchProject(id: string): Promise<any> {
+	async fetchProject(id: string, auth?: Auth<UserData>): Promise<any> {
 		try {
-			const response = await this.api.get(`/planning/project/fetch/${id}`)
+			const response = await this.api.get(`/planning/project/fetch/${id}`, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data
 		} catch (error: any) {
 			if (error.response?.status === 404) {
@@ -43,9 +47,9 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async fetchAllProjects(): Promise<any> {
+	async fetchAllProjects(auth?: Auth<UserData>): Promise<any> {
 		try {
-			const response = await this.api.get(`/planning/project/all`)
+			const response = await this.api.get(`/planning/project/all`, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data
 		} catch (error) {
 			console.error("Error fetching all projects:", error)
@@ -53,12 +57,12 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async archiveProject(projectId: string): Promise<any> {
+	async archiveProject(projectId: string, auth?: Auth<UserData>): Promise<any> {
 		try {
 			const requestBody = {
 				projectId: projectId,
 			}
-			const response = await this.api.put(`/planning/project/archive`, requestBody)
+			const response = await this.api.put(`/planning/project/archive`, requestBody, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data
 		} catch (error) {
 			console.error("Error archiving project:", error)
@@ -66,14 +70,14 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async createTask(projectId: string, title: string, description: string): Promise<Task> {
+	async createTask(projectId: string, title: string, description: string, auth?: Auth<UserData>): Promise<Task> {
 		try {
 			const requestBody = {
 				projectId: projectId,
 				title: title,
 				description: description,
 			}
-			const response = await this.api.post(`/planning/task`, requestBody)
+			const response = await this.api.post(`/planning/task`, requestBody, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data as Task
 		} catch (error) {
 			console.error("Error creating task:", error)
@@ -81,9 +85,9 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async updateTaskTitle(task: Task): Promise<Task> {
+	async updateTaskTitle(task: Task, auth?: Auth<UserData>): Promise<Task> {
 		try {
-			const response = await this.api.put(`/planning/task/title`, task)
+			const response = await this.api.put(`/planning/task/title`, task, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data as Task
 		} catch (error) {
 			console.error("Error updating task title:", error)
@@ -91,9 +95,9 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async updateTaskDescription(task: Task): Promise<Task> {
+	async updateTaskDescription(task: Task, auth?: Auth<UserData>): Promise<Task> {
 		try {
-			const response = await this.api.put(`/planning/task/description`, task)
+			const response = await this.api.put(`/planning/task/description`, task, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data as Task
 		} catch (error) {
 			console.error("Error updating task description:", error)
@@ -101,9 +105,9 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async fetchAllTasks(projectId: string): Promise<Task[]> {
+	async fetchAllTasks(projectId: string, auth?: Auth<UserData>): Promise<Task[]> {
 		try {
-			const response = await this.api.get(`/planning/task/fetch-all/${projectId}`)
+			const response = await this.api.get(`/planning/task/fetch-all/${projectId}`, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data as Task[]
 		} catch (error) {
 			console.error("Error fetching all tasks:", error)
@@ -111,13 +115,13 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async planTasksWithAI(projectId: string, projectDescription: string): Promise<Task[]> {
+	async planTasksWithAI(projectId: string, projectDescription: string, auth?: Auth<UserData>): Promise<Task[]> {
 		try {
 			const requestBody = {
 				projectId: projectId,
 				projectDescription: projectDescription,
 			}
-			const response = await this.api.post(`/planning/task/plan-tasks`, requestBody)
+			const response = await this.api.post(`/planning/task/plan-tasks`, requestBody, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data as Task[]
 		} catch (error) {
 			console.error("Error planning tasks with AI:", error)
@@ -130,6 +134,7 @@ export class ProjectPlanningClient {
 		workerId: string,
 		message: string,
 		type: ActivityType.STARTED_WORK | ActivityType.FINISHED_WORK,
+		auth?: Auth<UserData>
 	): Promise<Task> {
 		try {
 			const requestBody = {
@@ -138,7 +143,7 @@ export class ProjectPlanningClient {
 				message: message,
 				type: type,
 			}
-			const response = await this.api.post(`/planning/task/record-work`, requestBody)
+			const response = await this.api.post(`/planning/task/record-work`, requestBody, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data as Task
 		} catch (error) {
 			console.error("Error recording work:", error)
@@ -146,13 +151,14 @@ export class ProjectPlanningClient {
 		}
 	}
 
-	async leaveComment(taskId: string, commentText: string): Promise<Task> {
+	async leaveComment(taskId: string, commentText: string, authorName: string, auth?: Auth<UserData>): Promise<Task> {
 		try {
 			const requestBody = {
 				taskId: taskId,
 				commentText: commentText,
+				authorName: authorName,
 			}
-			const response = await this.api.post(`/planning/task/leave-comment`, requestBody)
+			const response = await this.api.post(`/planning/task/leave-comment`, requestBody, { headers: auth ? authDataHeaders(auth) : {} })
 			return response.data as Task
 		} catch (error) {
 			console.error("Error leaving comment:", error)

@@ -1,5 +1,8 @@
 import { Task } from "@jigjoy-ai/task-contracts"
 import type { AxiosInstance } from "@jigjoy-ai/http-client"
+import { UserData } from "@jigjoy-ai/auth"
+import { Auth } from "@heksagon/app"
+import { authDataHeaders } from "@heksagon/http"
 
 export enum ModuleType {
 	FRONTEND = "FRONTEND",
@@ -14,13 +17,17 @@ export type Module = {
 export class AICodingClient {
 	constructor(private readonly api: AxiosInstance) {}
 
-	async initalizeModule(projectId: string): Promise<Module> {
+	async initalizeModule(projectId: string, auth?: Auth<UserData>): Promise<Module> {
 		try {
 			const requestBody = {
 				projectId: projectId,
 			}
 
-			const response = await this.api.post(`/ai/module/initialization`, requestBody)
+			const response = await this.api.post(
+				`/ai/module/initialization`, 
+				requestBody, 
+				{ headers: auth ? authDataHeaders(auth) : {} 
+			})
 
 			return response.data
 		} catch (error) {
@@ -29,9 +36,13 @@ export class AICodingClient {
 		}
 	}
 
-	async developModule(task: Task): Promise<{ totalCostInUSD: number }> {
+	async developModule(task: Task, auth?: Auth<UserData>): Promise<{ totalCostInUSD: number }> {
 		try {
-			const response = await this.api.post(`/ai/module/development`, { task: task })
+			const response = await this.api.post(
+				`/ai/module/development`, 
+				{ task: task }, 
+				{ headers: auth ? authDataHeaders(auth) : {} }
+			)
 
 			return response.data
 		} catch (error) {
@@ -40,13 +51,17 @@ export class AICodingClient {
 		}
 	}
 
-	async deployModule(projectId: string): Promise<{ moduleId: string; publicAppUrl: string }> {
+	async deployModule(projectId: string, auth?: Auth<UserData>): Promise<{ moduleId: string; publicAppUrl: string }> {
 		try {
 			const requestBody = {
 				projectId: projectId,
 			}
 
-			const response = await this.api.post(`/ai/module/deployment`, requestBody)
+			const response = await this.api.post(
+				`/ai/module/deployment`, 
+				requestBody, 
+				{ headers: auth ? authDataHeaders(auth) : {} }
+			)
 
 			return response.data
 		} catch (error) {

@@ -1,6 +1,6 @@
 {
 	"name": "@jigjoy-ai/project-versioning-client",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "The SDK for working with project versions",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
@@ -31,6 +31,9 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
+		"@heksagon/app": "^0.0.14",
+		"@heksagon/http": "^0.0.9",
+		"@jigjoy-ai/auth": "^0.1.0",
 		"@jigjoy-ai/http-client": "^0.1.1"
 	}
 }
