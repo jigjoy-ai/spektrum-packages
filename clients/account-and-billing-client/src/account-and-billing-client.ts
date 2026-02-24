@@ -3,7 +3,7 @@ import { authDataHeaders } from "@heksagon/http"
 import { UserData } from "@jigjoy-ai/auth"
 import { authStoreBrowser } from "@jigjoy-ai/http-client"
 import type { AxiosInstance } from "@jigjoy-ai/http-client"
-import { ApiKey } from "./types"
+import { ApiKey, AuthSession } from "./types"
 
 export class AccountAndBillingClient {
 	constructor(private readonly api: AxiosInstance) {}
@@ -17,7 +17,7 @@ export class AccountAndBillingClient {
 		return res.data
 	}
 
-	async verifyMagicLinkChallenge(email: string, challengeResponse: string, auth?: Auth<UserData>): Promise<void> {
+	async verifyMagicLinkChallenge(email: string, challengeResponse: string, auth?: Auth<UserData>): Promise<AuthSession> {
 		const options = {
 			email: email,
 			challenge: challengeResponse,
@@ -28,11 +28,16 @@ export class AccountAndBillingClient {
 			options, 
 			{ headers: auth ? authDataHeaders(auth) : {} }
 		)
-		authStoreBrowser.setAccessToken(res.data.authSession.accessToken)
-		return res.data
+
+		const authSession: AuthSession = {
+			accessToken: res.data.accessToken,
+			userData: res.data.userData,
+		}
+		authStoreBrowser.setAccessToken(authSession.accessToken)
+		return authSession
 	}
 
-	async createApiKey(name: string, auth?: Auth<UserData>): Promise<{ apiKey: ApiKey, rawKey: string }> {
+	async createApiKey(name: string, auth?: Auth<UserData>): Promise<ApiKey> {
 		const res: any = await this.api.post(
 			`/account/api-key`, 
 			{ name: name },
