@@ -3,6 +3,7 @@ import { authDataHeaders } from "@heksagon/http"
 import { UserData } from "@jigjoy-ai/auth"
 import { authStoreBrowser } from "@jigjoy-ai/http-client"
 import type { AxiosInstance } from "@jigjoy-ai/http-client"
+import { ApiKey } from "./types"
 
 export class AccountAndBillingClient {
 	constructor(private readonly api: AxiosInstance) {}
@@ -31,7 +32,7 @@ export class AccountAndBillingClient {
 		return res.data
 	}
 
-	async createApiKey(name: string, auth?: Auth<UserData>): Promise<void> {
+	async createApiKey(name: string, auth?: Auth<UserData>): Promise<{ apiKey: ApiKey, rawKey: string }> {
 		const res: any = await this.api.post(
 			`/account/api-key`, 
 			{ name: name },
