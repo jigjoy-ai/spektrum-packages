@@ -19,10 +19,10 @@
   dependencies:
     "@heksagon/app" "^0.0.14"
 
-"@jigjoy-ai/account-and-billing-client@^0.5.4":
-  version "0.5.4"
-  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/account-and-billing-client/0.5.4/eaa8ecb88fc2a41770d8cdc66220d5d101270032"
-  integrity sha512-M7zcimyNtXxZ0+eluZbCusDvUGo6CACsUqoqG4/hiEaMnyvOaPmjEOJuaTzyvoq91513/jb5JLh5ryXHQGXQSA==
+"@jigjoy-ai/account-and-billing-client@^0.5.8":
+  version "0.5.8"
+  resolved "https://npm.pkg.github.com/download/@jigjoy-ai/account-and-billing-client/0.5.8/6ff5572c4a00b3ff1430c839c2779537e9a322c6"
+  integrity sha512-C+LrSKyRMObK6TnLegh/CG11TQg0myoUsnlhg78RZXXDBTzF52ez1Diq03Hq/lAMTpRFWhPCT3a/oH4JdM7Kig==
   dependencies:
     "@heksagon/app" "^0.0.14"
     "@heksagon/http" "^0.0.9"

@@ -1,4 +1,4 @@
-import { AccountAndBillingClient } from "@jigjoy-ai/account-and-billing-client"
+import { AccountAndBillingClient, ApiKey, AuthSession, UserData } from "@jigjoy-ai/account-and-billing-client"
 import { ProjectNotFoundError, ProjectPlanningClient } from "@jigjoy-ai/project-planning-client"
 import { ProjectDeploymentClient, type DeployModuleCommand, type EntryPoint, EnvironmentType } from "@jigjoy-ai/project-deployment-client"
 import { DefaultPagination, type Heatmap, ObservabilityClient, type Pagination, type TaskExecution, TaskExecutionStatus, type TimeRange } from "@jigjoy-ai/observability-client"
@@ -28,6 +28,9 @@ export {
 	ProjectPlanningClient,
 	// Account and Billing
 	AccountAndBillingClient,
+	type ApiKey,
+	type AuthSession,
+	type UserData,
 	// Project Versioning
 	ProjectVersioningClient
 }
