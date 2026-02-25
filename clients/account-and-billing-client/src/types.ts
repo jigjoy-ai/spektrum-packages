@@ -1,5 +1,5 @@
 export interface UserData {
-	userId: string
+	id: string
 	organizationId: string
 	email: string
 	credits: number,

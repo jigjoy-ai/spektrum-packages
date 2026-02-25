@@ -29,9 +29,18 @@ export class AccountAndBillingClient {
 			{ headers: auth ? authDataHeaders(auth) : {} }
 		)
 
+		const accessToken = res.data.accessToken
+		const userData = res.data.userData
+
 		const authSession: AuthSession = {
-			accessToken: res.data.accessToken,
-			userData: res.data.userData,
+			accessToken: accessToken,
+			userData: {
+				id: userData.id,
+				organizationId: userData.organizationId,
+				email: userData.email,
+				credits: userData.credits,
+				apiKeys: userData.apiKeys,
+			},
 		}
 		authStoreBrowser.setAccessToken(authSession.accessToken)
 		return authSession
@@ -46,9 +55,9 @@ export class AccountAndBillingClient {
 		return res.data
 	}
 
-	async chargeAccount(providerCostUsd: number, auth?: Auth<UserData>): Promise<{ totalCostUsd: number }> {
+	async charge(providerCostUsd: number, auth?: Auth<UserData>): Promise<{ totalCostUsd: number }> {
 		const res: any = await this.api.post(
-			`/account/charge`, 
+			`/account/credits/charge`, 
 			{ providerCostUsd: providerCostUsd },
 			{ headers: auth ? authDataHeaders(auth) : {} }
 		)
