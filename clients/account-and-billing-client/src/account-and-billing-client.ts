@@ -3,7 +3,7 @@ import { authDataHeaders } from "@heksagon/http"
 import { UserData } from "@jigjoy-ai/auth"
 import { authStoreBrowser } from "@jigjoy-ai/http-client"
 import type { AxiosInstance } from "@jigjoy-ai/http-client"
-import { ApiKey, AuthSession } from "./types"
+import { ApiKey, AuthSession, PaginatedResult, Pagination, Transaction } from "./types"
 
 export class AccountAndBillingClient {
 	constructor(private readonly api: AxiosInstance) {}
@@ -62,6 +62,18 @@ export class AccountAndBillingClient {
 			{ headers: auth ? authDataHeaders(auth) : {} }
 		)
 		return res.data as { totalCostUsd: number }
+	}
+
+	async getTransactionHistory(pagination: Pagination, auth?: Auth<UserData>): Promise<PaginatedResult<Transaction>> {
+		const res: any = await this.api.get(
+			`/account/transaction/all?page=${pagination.pageNumber}&size=${pagination.pageSize}`,
+			{ headers: auth ? authDataHeaders(auth) : {} }
+		)
+		
+		return {
+			items: res.data.items,
+			pagination: res.data.pagination,
+		}
 	}
 
 	logout() {
