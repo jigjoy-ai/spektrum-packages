@@ -10,24 +10,26 @@ export class AccountAndBillingClient {
 
 	async sendMagicLinkChallenge(email: string, auth?: Auth<UserData>): Promise<void> {
 		const res: any = await this.api.post(
-			`/account/challenge/magic-link`, 
-			{ email: email }, 
-			{ headers: auth ? authDataHeaders(auth) : {} }
+			`/account/challenge/magic-link`,
+			{ email: email },
+			{ headers: auth ? authDataHeaders(auth) : {} },
 		)
 		return res.data
 	}
 
-	async verifyMagicLinkChallenge(email: string, challengeResponse: string, auth?: Auth<UserData>): Promise<AuthSession> {
+	async verifyMagicLinkChallenge(
+		email: string,
+		challengeResponse: string,
+		auth?: Auth<UserData>,
+	): Promise<AuthSession> {
 		const options = {
 			email: email,
 			challenge: challengeResponse,
 		}
 
-		const res: any = await this.api.post(
-			`/account/challenge/magic-link/verify`, 
-			options, 
-			{ headers: auth ? authDataHeaders(auth) : {} }
-		)
+		const res: any = await this.api.post(`/account/challenge/magic-link/verify`, options, {
+			headers: auth ? authDataHeaders(auth) : {},
+		})
 
 		const accessToken = res.data.accessToken
 		const userData = res.data.userData
@@ -48,18 +50,18 @@ export class AccountAndBillingClient {
 
 	async createApiKey(name: string, auth?: Auth<UserData>): Promise<ApiKey> {
 		const res: any = await this.api.post(
-			`/account/api-key`, 
+			`/account/api-key`,
 			{ name: name },
-			{ headers: auth ? authDataHeaders(auth) : {} }
+			{ headers: auth ? authDataHeaders(auth) : {} },
 		)
 		return res.data
 	}
 
 	async charge(providerCostUsd: number, auth?: Auth<UserData>): Promise<{ totalCostUsd: number }> {
 		const res: any = await this.api.post(
-			`/account/credits/charge`, 
+			`/account/credits/charge`,
 			{ providerCostUsd: providerCostUsd },
-			{ headers: auth ? authDataHeaders(auth) : {} }
+			{ headers: auth ? authDataHeaders(auth) : {} },
 		)
 		return res.data as { totalCostUsd: number }
 	}
@@ -67,7 +69,7 @@ export class AccountAndBillingClient {
 	async getTransactionHistory(pagination: Pagination, auth?: Auth<UserData>): Promise<PaginatedResult<Transaction>> {
 		const res: any = await this.api.get(
 			`/account/transaction/all?page=${pagination.pageNumber}&size=${pagination.pageSize}`,
-			{ headers: auth ? authDataHeaders(auth) : {} }
+			{ headers: auth ? authDataHeaders(auth) : {} },
 		)
 
 		return {
@@ -77,13 +79,13 @@ export class AccountAndBillingClient {
 	}
 
 	async downloadInvoicePdf(transactionId: string, auth?: Auth<UserData>): Promise<Blob> {
-		const res = await this.api.get(
-			`/account/transaction/${transactionId}/invoice`,
-			{ 
-				headers: auth ? authDataHeaders(auth) : {},
-				responseType: 'blob'
-			}
-		)
+		const res = await this.api.get(`/account/transaction/${transactionId}/invoice`, {
+			headers: {
+				...(auth ? authDataHeaders(auth) : {}),
+				Accept: "application/pdf",
+			},
+			responseType: "blob",
+		})
 		return res.data
 	}
 
