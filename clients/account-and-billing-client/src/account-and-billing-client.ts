@@ -69,11 +69,22 @@ export class AccountAndBillingClient {
 			`/account/transaction/all?page=${pagination.pageNumber}&size=${pagination.pageSize}`,
 			{ headers: auth ? authDataHeaders(auth) : {} }
 		)
-		
+
 		return {
 			items: res.data.items,
 			pagination: res.data.pagination,
 		}
+	}
+
+	async downloadInvoicePdf(transactionId: string, auth?: Auth<UserData>): Promise<Blob> {
+		const res = await this.api.get(
+			`/account/transaction/${transactionId}/invoice`,
+			{ 
+				headers: auth ? authDataHeaders(auth) : {},
+				responseType: 'blob'
+			}
+		)
+		return res.data
 	}
 
 	logout() {

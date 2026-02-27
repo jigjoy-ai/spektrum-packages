@@ -41,7 +41,6 @@ export type PaginatedResult<T> = {
 export type Transaction = {
     id: string
     organizationId: string
-    invoicePdfUrl: string
     amount: number
     status: string
     createdAt: string
