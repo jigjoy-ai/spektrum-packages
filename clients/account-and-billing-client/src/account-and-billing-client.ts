@@ -66,6 +66,11 @@ export class AccountAndBillingClient {
 		return res.data as { totalCostUsd: number }
 	}
 
+	async getCredits(auth?: Auth<UserData>): Promise<{ creditBalance: number }> {
+		const res: any = await this.api.get(`/account/credits`, { headers: auth ? authDataHeaders(auth) : {} })
+		return res.data as { creditBalance: number }
+	}
+
 	async getTransactionHistory(pagination: Pagination, auth?: Auth<UserData>): Promise<PaginatedResult<Transaction>> {
 		const res: any = await this.api.get(
 			`/account/transaction/all?page=${pagination.pageNumber}&size=${pagination.pageSize}`,
