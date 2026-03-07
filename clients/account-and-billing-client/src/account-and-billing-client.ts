@@ -67,7 +67,7 @@ export class AccountAndBillingClient {
 	}
 
 	async getCredits(auth?: Auth<UserData>): Promise<{ creditBalance: number }> {
-		const res: any = await this.api.get(`/account/credits`, { headers: auth ? authDataHeaders(auth) : {} })
+		const res: any = await this.api.get(`/account/credits/balance`, { headers: auth ? authDataHeaders(auth) : {} })
 		return res.data as { creditBalance: number }
 	}
 
