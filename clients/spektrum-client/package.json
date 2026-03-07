@@ -1,6 +1,6 @@
 {
 	"name": "@jigjoy-ai/spektrum-client",
-	"version": "0.0.27",
+	"version": "0.0.28",
 	"description": "The client for Spektrum platform",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
