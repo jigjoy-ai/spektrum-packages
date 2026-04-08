@@ -8,10 +8,10 @@ import { ApiKey, AuthSession, PaginatedResult, Pagination, Transaction } from ".
 export class AccountAndBillingClient {
 	constructor(private readonly api: AxiosInstance) {}
 
-	async sendMagicLinkChallenge(email: string, auth?: Auth<UserData>): Promise<void> {
+	async sendMagicLinkChallenge(email: string, sdkUser: boolean, auth?: Auth<UserData>): Promise<void> {
 		const res: any = await this.api.post(
 			`/account/challenge/magic-link`,
-			{ email: email },
+			{ email: email, sdkUser: sdkUser },
 			{ headers: auth ? authDataHeaders(auth) : {} },
 		)
 		return res.data
